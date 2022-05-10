@@ -8,7 +8,9 @@ Fly int,
 Dato date,
 Sæde int,
 Gate char,
-afgang Timestamp 
+afgang Timestamp,
+CONSTRAINT PK_Billet_BilletID PRIMARY KEY CLUSTERED 
+(BilletID)
 )
 
 CREATE TABLE Faktura
@@ -17,13 +19,17 @@ KundeID int,
 ExMoms float,
 InklMoms float,
 Destination char,
-CVR int
+CVR int,
+CONSTRAINT PK_Faktura_FakturaID PRIMARY KEY CLUSTERED 
+(FakturaID)
 )
 
 CREATE TABLE Tillægsprodukter
 (TillægsproduktID int,
 Pris float,
-Navn char
+Navn char,
+CONSTRAINT PK_Tillægsprodukter_tillægsproduktID PRIMARY KEY CLUSTERED 
+(tillægsproduktID)
 )
 
 CREATE TABLE NuværendeTillægsprodukter
@@ -31,15 +37,20 @@ CREATE TABLE NuværendeTillægsprodukter
 tillægsprodukt int,
 FakturaID int,
 Pris float,
-UnderFlyvning Bit
+UnderFlyvning Bit,
+CONSTRAINT PK_nuværendeTillægsprodukter_NTID PRIMARY KEY CLUSTERED 
+(NTID)
 )
 
 CREATE TABLE Kunde 
 (KundeID int,
 Navn char,
 tlf int,
-Email char
+Email char,
+CONSTRAINT PK_Kunde_KundeID PRIMARY KEY CLUSTERED 
+(KundeID)
 )
+
 
 
 
