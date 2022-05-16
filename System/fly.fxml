@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
       <TableView layoutY="54.0" prefHeight="356.0" prefWidth="600.0">
         <columns>
@@ -18,7 +18,7 @@
             <TableColumn prefWidth="99.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
         </columns>
       </TableView>
-      <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="79.0" style="-fx-border-color: #58b2dc; -fx-background-color: #ffffff; -fx-border-radius: 4; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
+      <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="32.0" prefWidth="79.0" style="-fx-border-color: #58b2dc; -fx-background-color: #ffffff; -fx-border-radius: 4; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
