@@ -2,14 +2,8 @@ package application;
 
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import javafx.scene.Node;
-import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,14 +11,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SceneController {
+	
+	@FXML
+	private TableView<Fly> table_fly;
+	@FXML
+	private TableColumn<Fly,String> col_flynr;
+	@FXML
+	private TableColumn<Fly,String> col_flynavn;
+	@FXML
+	private TableColumn<Fly,String> col_flypladser;
+	@FXML
+	private TableColumn<Fly,String> col_flystatus;
+	
 	private Stage stage;
 	private Scene scene;
 	
@@ -80,5 +83,28 @@ public class SceneController {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	//Indlæs de forskellige fly
+	public void loadFly(ActionEvent event)	{
+		ObservableList<Fly> oblist = FXCollections.observableArrayList();
+		
+		try {
+			ResultSet rs = Main.getRS();
+			
+			while(rs.next()) {
+				oblist.add(new Fly(rs.getInt("fly_id"),rs.getString("navn"),rs.getInt("pladser"),rs.getBoolean("status")));
+			}
+		
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		col_flynr.setCellValueFactory(cellData -> cellData.getValue().getId());
+		col_flynavn.setCellValueFactory(cellData -> cellData.getValue().getNavn());
+		col_flypladser.setCellValueFactory(cellData -> cellData.getValue().getPladser());
+		col_flystatus.setCellValueFactory(cellData -> cellData.getValue().getStatus());
+
+		table_fly.setItems(oblist);
 	}
 }
