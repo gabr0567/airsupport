@@ -7,9 +7,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #89cff0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #89cff0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="222.0" layoutY="117.0" mnemonicParsing="false" onAction="#switchToFly" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-border-color: #0e4e6c; -fx-border-width: 2; -fx-border-radius: 4;" text="Bestil fly" textFill="#0e4e6c">
+      <Button layoutX="222.0" layoutY="117.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-border-color: #0e4e6c; -fx-border-width: 2; -fx-border-radius: 4;" text="Flyafgange" textFill="#0e4e6c">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -48,12 +48,12 @@
             <Image url="@../../../Downloads/fly.png" />
          </image>
       </ImageView>
-      <Button layoutX="222.0" layoutY="185.0" mnemonicParsing="false" onAction="#switchToBilletter" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-border-color: #0e4e6c; -fx-border-width: 2; -fx-border-radius: 4;" text="Billetter" textFill="#0e4e6c">
+      <Button layoutX="222.0" layoutY="185.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-border-color: #0e4e6c; -fx-border-width: 2; -fx-border-radius: 4;" text="Billetter" textFill="#0e4e6c">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="222.0" layoutY="253.0" mnemonicParsing="false" onAction="#switchToRprodukter" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-border-color: #0e4e6c; -fx-border-width: 2; -fx-border-radius: 4;" text="Rediger tillægsprodukter" textFill="#0e4e6c">
+      <Button layoutX="222.0" layoutY="253.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-border-color: #0e4e6c; -fx-border-width: 2; -fx-border-radius: 4;" text="Rediger tillægsprodukter" textFill="#0e4e6c">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
