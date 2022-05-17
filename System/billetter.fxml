@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TableView layoutY="61.0" prefHeight="338.0" prefWidth="600.0">
+      <TableView layoutX="83.0" layoutY="92.0" prefHeight="588.0" prefWidth="1063.0">
         <columns>
-          <TableColumn prefWidth="185.60003662109375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
-          <TableColumn minWidth="0.0" prefWidth="242.39996337890625" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Billet nr." />
-            <TableColumn minWidth="0.0" prefWidth="179.99996337890627" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
+          <TableColumn prefWidth="398.9332962036133" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
+          <TableColumn minWidth="0.0" prefWidth="403.4667053222656" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Billet nr." />
+            <TableColumn minWidth="0.0" prefWidth="420.79998779296875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
         </columns>
       </TableView>
    </children>

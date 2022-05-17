@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.12011718750000001" layoutX="-12.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="411.0" prefWidth="619.0">
         <items>
@@ -31,7 +31,7 @@
                   <TextField editable="false" layoutX="456.0" layoutY="49.0" promptText="CVR" />
                   <CheckBox layoutX="450.0" layoutY="104.0" mnemonicParsing="false" text="Fotografi" />
                   <CheckBox layoutX="450.0" layoutY="154.0" mnemonicParsing="false" text="Speciel bagagehåndtering" />
-                  <Button layoutX="515.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Udfør" textFill="WHITE">
+                  <Button layoutX="515.0" layoutY="319.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Udfør" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
@@ -47,7 +47,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </MenuButton>
-                  <Button layoutX="32.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchToFly" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
+                  <Button layoutX="32.0" layoutY="319.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
