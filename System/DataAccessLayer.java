@@ -84,4 +84,15 @@ public class DataAccessLayer {
   			return 0;
   		}
   	}
+  	
+	public ResultSet getRS() {
+		ResultSet rs;
+		try {
+			rs = connection.createStatement().executeQuery("SELECT * FROM Fly");
+			return rs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} 
+	}
 }

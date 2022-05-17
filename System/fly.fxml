@@ -10,17 +10,16 @@
    <children>
       <TableView layoutY="54.0" prefHeight="356.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="128.79998779296875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Destination" />
-          <TableColumn prefWidth="104.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Dato" />
-            <TableColumn prefWidth="72.800048828125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Tid" />
-            <TableColumn prefWidth="81.5999755859375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Flynr" />
-            <TableColumn prefWidth="111.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Ledige pladser" />
-            <TableColumn prefWidth="99.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
+            <TableColumn fx:id="col_flynr" prefWidth="111.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Flynr" />
+            <TableColumn fx:id="col_flynavn" prefWidth="81.59991455078125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
+            <TableColumn fx:id="col_flypladser" prefWidth="81.5999755859375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pladser" />
+            <TableColumn fx:id="col_flystatus" prefWidth="99.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Status" />
         </columns>
       </TableView>
       <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="32.0" prefWidth="79.0" style="-fx-border-color: #58b2dc; -fx-background-color: #ffffff; -fx-border-radius: 4; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
+      <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadFly" text="Indlæs" />
    </children>
 </AnchorPane>
