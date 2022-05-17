@@ -4,20 +4,20 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Fly {
-	private int fly_id;
+	private int FlyID;
 	private String navn;
 	private int pladser;
 	private boolean status;
   
-	public Fly(int fly_id, String navn, int pladser, boolean status) {
-		this.fly_id = fly_id;
+	public Fly(int FlyID, String navn, int pladser, boolean status) {
+		this.FlyID = FlyID;
 		this.navn = navn;
 		this.pladser = pladser;
 		this.status = status;
 	}
 
 	public StringProperty getId() {
-		StringProperty var = new SimpleStringProperty(""+fly_id);
+		StringProperty var = new SimpleStringProperty(""+FlyID);
 		return var;
 	}
 
@@ -38,7 +38,7 @@ public class Fly {
   
 	@Override
 	public String toString() {
-		return "[Hold: hold_id=" + fly_id +
+		return "[Hold: hold_id=" + FlyID +
 				", navn=" + navn +
 				", point=" + status + "]";
 	}

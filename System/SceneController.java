@@ -93,7 +93,9 @@ public class SceneController {
 			ResultSet rs = Main.getRS();
 			
 			while(rs.next()) {
-				oblist.add(new Fly(rs.getInt("fly_id"),rs.getString("navn"),rs.getInt("pladser"),rs.getBoolean("status")));
+				if (rs.getBoolean("status") == true) {
+					oblist.add(new Fly(rs.getInt("FlyID"),rs.getString("navn"),rs.getInt("pladser"),rs.getBoolean("status")));
+				}
 			}
 		
 		} catch (Exception ex) {
