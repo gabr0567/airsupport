@@ -86,7 +86,7 @@ public class SceneController {
 	}
 	
 	//Indlæs de forskellige fly
-	public void load(ActionEvent event)	{
+	public void loadFly(ActionEvent event)	{
 		ObservableList<Fly> oblist = FXCollections.observableArrayList();
 		
 		try {
