@@ -3,12 +3,13 @@ import java.sql.*;
 
 public class DataAccessLayer {
 	private Connection connection;
-
+	//Gabriel
 	public DataAccessLayer(String databaseName) {
 		loadJdbcDriver();
 		openConnection(databaseName);
 	}
-  
+	
+	//Gabriel
 	private boolean loadJdbcDriver() {
 		try {
 			System.out.println("Loading JDBC driver...");
@@ -24,7 +25,7 @@ public class DataAccessLayer {
 			return false;
 		}
 	}
-  
+	//Gabriel
   private boolean openConnection(String databaseName) {
 	  String connectionString =
 			  "jdbc:sqlserver://localhost:1433;" +
@@ -51,6 +52,7 @@ public class DataAccessLayer {
 	  }
   	}
   
+//Gabriel
   	public boolean executeUpdate(String sql) {
   		try {
   			System.out.println(sql);
@@ -64,7 +66,7 @@ public class DataAccessLayer {
   			return false;
 	    }
   	}
-
+  //Gabriel
   	public int executeInsert(String sql) {
   		try {
   			System.out.println(sql);
@@ -85,6 +87,7 @@ public class DataAccessLayer {
   		}
   	}
   	
+  //Gabriel
 	public ResultSet getRS() {
 		ResultSet rs;
 		try {
@@ -95,4 +98,16 @@ public class DataAccessLayer {
 			return null;
 		} 
 	}
+	
+	  //Gabriel
+		public ResultSet getRS2() {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM Billet");
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
 }

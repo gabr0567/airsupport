@@ -12,12 +12,12 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TableView layoutY="61.0" prefHeight="338.0" prefWidth="600.0">
+      <TableView fx:id="table_billetter" layoutY="61.0" prefHeight="338.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="185.60003662109375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
-          <TableColumn minWidth="0.0" prefWidth="242.39996337890625" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Billet nr." />
-            <TableColumn minWidth="0.0" prefWidth="179.99996337890627" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
+          <TableColumn fx:id="col_navn" prefWidth="185.60003662109375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
+          <TableColumn fx:id="col_billetID" minWidth="0.0" prefWidth="411.99993896484375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Billet nr." />
         </columns>
       </TableView>
+      <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadBilletter" text="Load" />
    </children>
 </AnchorPane>

@@ -3,100 +3,89 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="application.SceneController">
    <children>
-      <SplitPane dividerPositions="0.3744979919678715" layoutX="-2.0" layoutY="6.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <MenuButton layoutX="43.0" layoutY="88.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Mad" textFill="#58b2dc">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </MenuButton>
-                  <MenuButton layoutX="192.0" layoutY="88.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Drikkevarer" textFill="#58b2dc">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </MenuButton>
-                  <MenuButton layoutX="353.0" layoutY="88.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Desserter" textFill="#58b2dc">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </MenuButton>
-               </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="241.0" prefWidth="599.0">
-               <children>
-                  <SplitPane dividerPositions="0.468875502008032" layoutY="-2.0" prefHeight="254.0" prefWidth="599.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="278.0" style="-fx-background-color: #ffffff;">
-                           <children>
-                              <Text layoutX="98.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ændre pris">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Text>
-                           </children></AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
-                           <children>
-                              <MenuButton layoutX="72.0" layoutY="58.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Kategori" textFill="#58b2dc">
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                    <MenuItem mnemonicParsing="false" text="Action 2" />
-                                 </items>
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </MenuButton>
-                              <Text layoutX="121.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tilføj vare">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="29.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tilføj:" wrappingWidth="39.896484375" />
-                              <Button layoutX="194.0" layoutY="208.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilføj" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Button>
-                              <Text layoutX="28.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:" />
-                              <TextField layoutX="69.0" layoutY="123.0" />
-                              <TextField layoutX="69.0" layoutY="156.0" />
-                              <Text layoutX="38.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pris:" />
-                           </children></AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="29.0" prefWidth="87.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Tilbage" textFill="#58b2dc">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="58.0" prefWidth="152.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Tilbage" textFill="#58b2dc">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="24.0" />
          </font></Button>
-      <Text layoutX="60.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ny pris:" />
-      <TextField layoutX="109.0" layoutY="256.0" />
-      <Button layoutX="109.0" layoutY="298.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Ændre" textFill="WHITE">
+      <Text layoutX="151.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ny pris:">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
+            <Font size="24.0" />
+         </font></Text>
+      <Button layoutX="1180.0" layoutY="695.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilføj" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <TextField layoutX="1023.0" layoutY="600.0" prefHeight="34.0" prefWidth="159.0" />
+      <Text layoutX="931.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pris:" wrappingWidth="80.39999999999992">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="918.0" layoutY="565.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <MenuButton layoutX="1017.0" layoutY="465.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="162.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Kategori" textFill="#58b2dc">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </MenuButton>
+      <Text layoutX="912.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tilføj:" wrappingWidth="129.49652099609375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="1029.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tilføj vare">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <TextField layoutX="1021.0" layoutY="539.0" prefHeight="34.0" prefWidth="159.0" />
+      <TextField layoutX="286.0" layoutY="512.0" prefHeight="38.0" prefWidth="202.0" />
+      <Button layoutX="304.0" layoutY="588.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Ændre" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Text layoutX="319.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ændre pris">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <TextField layoutX="674.0" layoutY="359.0" prefHeight="418.0" prefWidth="6.0" style="-fx-background-color: #58b2dc;">
+         <font>
+            <Font size="1.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="-2.0" layoutY="359.0" prefHeight="6.0" prefWidth="1374.0" style="-fx-background-color: #58b2dc;">
+         <font>
+            <Font size="1.0" />
+         </font>
+      </TextField>
+      <TableView layoutX="190.0" layoutY="93.0" prefHeight="242.0" prefWidth="1140.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5;">
+        <columns>
+          <TableColumn prefWidth="1161.5999908447266" style="fx-border-color: #58b2dc; -fx-background-color: #58b2dc;" text="Tillægsprodukter" />
+        </columns>
+      </TableView>
+      <Button layoutX="1172.0" layoutY="14.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Indlæs" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

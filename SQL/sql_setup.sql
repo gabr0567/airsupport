@@ -6,22 +6,21 @@ DROP TABLE [Airsupport].[dbo].[Kunde]
 DROP TABLE [Airsupport].[dbo].[Fly]
 
 
-CREATE TABLE Billet
+CREATE TABLE [Airsupport].[dbo].[Billet]
 (BilletID int NOT NULL,
 KundeID int NOT NULL,
 Navn varchar(100) NOT NULL,
 Til varchar(100) NOT NULL,
-Fra varchar(100) NOT NULL,
 Fly int NOT NULL,
 Dato date NOT NULL,
 Sæde int NOT NULL,
 Gate varchar(100) NOT NULL,
-afgang Timestamp NOT NULL,
+afgang time(7) NOT NULL,
 CONSTRAINT PK_Billet_BilletID PRIMARY KEY CLUSTERED 
 (BilletID)
 )
 
-CREATE TABLE Faktura
+CREATE TABLE [Airsupport].[dbo].[Faktura]
 (FakturaID int NOT NULL,
 KundeID int NOT NULL,
 ExMoms float NOT NULL,
@@ -32,7 +31,7 @@ CONSTRAINT PK_Faktura_FakturaID PRIMARY KEY CLUSTERED
 (FakturaID)
 )
 
-CREATE TABLE Tillægsprodukter
+CREATE TABLE [Airsupport].[dbo].[Tillægsprodukter]
 (TillægsproduktID int NOT NULL,
 Pris float NOT NULL,
 Navn varchar(100) NOT NULL,
@@ -41,7 +40,7 @@ CONSTRAINT PK_Tillægsprodukter_tillægsproduktID PRIMARY KEY CLUSTERED
 (tillægsproduktID)
 )
 
-CREATE TABLE NuværendeTillægsprodukter
+CREATE TABLE [Airsupport].[dbo].[NuværendeTillægsprodukter]
 (NTID int NOT NULL,
 tillægsprodukt int NOT NULL,
 FakturaID int NOT NULL,
@@ -51,7 +50,7 @@ CONSTRAINT PK_nuværendeTillægsprodukter_NTID PRIMARY KEY CLUSTERED
 (NTID)
 )
 
-CREATE TABLE Kunde 
+CREATE TABLE [Airsupport].[dbo].[Kunde]
 (KundeID int NOT NULL,
 Navn varchar(100) NOT NULL,
 tlf int NOT NULL,
@@ -60,7 +59,7 @@ CONSTRAINT PK_Kunde_KundeID PRIMARY KEY CLUSTERED
 (KundeID)
 )
 
-CREATE TABLE Fly
+CREATE TABLE [Airsupport].[dbo].[Fly]
 (FlyID int NOT NULL,
 Navn varchar(100) NOT NULL,
 Status Bit NOT NULL,
@@ -78,6 +77,9 @@ VALUES (1,40,'Allergi', 1), (2, 55, 'Glutenfri', 0),(3, 90, 'Diabetikeren', 1),(
 INSERT INTO Fly (FlyID, Navn, Pladser, Status)
 VALUES (1, 'Cessna Citation V', 8, 1), (2, 'Cessna Citation V', 8, 1), (3, 'Cessna Citation V', 8, 1),
 (4, 'Cessna Citation V', 8, 1), (5, 'Cessna Citation V', 8, 1)
+
+INSERT INTO Billet (BilletID, KundeID, Navn, Til, Fly, Dato, Sæde, Gate, afgang)
+VALUES (412,124,'John', 'CPH', 3, '2022-5-20', 4, '3B', '18:00:00')
 
 
 
