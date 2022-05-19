@@ -37,4 +37,8 @@ public class Main extends Application {
 	public static ResultSet getRS2() {
 		return db.getRS2();
 	}
+	//Nilaksan
+	public static ResultSet getRS3() {
+		return db.getRS3();
+	}
 }

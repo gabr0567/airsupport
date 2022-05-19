@@ -110,4 +110,15 @@ public class DataAccessLayer {
 				return null;
 			} 
 		}
+		//Nilaksan
+		public ResultSet getRS3() {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM Tillægsprodukter");
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
 }

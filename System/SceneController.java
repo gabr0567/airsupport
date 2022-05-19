@@ -38,6 +38,16 @@ public class SceneController {
 	@FXML
 	private TableColumn<Billetter,String> col_navn;
 	
+	//table billetter
+	@FXML
+	private TableView<Rprodukter> table_TPTV;
+	@FXML
+	private TableColumn<Rprodukter, String> col_TP;
+	@FXML
+	private TableColumn<Rprodukter, String> col_pris;
+	
+	
+	
 	
 	private Stage stage;
 	private Scene scene;
@@ -120,7 +130,7 @@ public class SceneController {
 
 		table_fly.setItems(oblist);
 	}
-	
+	//knappen til at loade billetter
 	public void loadBilletter(ActionEvent event) {
 		ObservableList<Billetter> oblist = FXCollections.observableArrayList();
 		
@@ -139,6 +149,7 @@ public class SceneController {
 						rs2.getTimestamp("afgang")));
 			}
 		
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -147,5 +158,30 @@ public class SceneController {
 		col_navn.setCellValueFactory(cellData -> cellData.getValue().getNavn());
 
 		table_billetter.setItems(oblist);
+	}
+	//knappen til at loade tillægsprodukter
+	
+	public void loadTP(ActionEvent event)	{
+		ObservableList<Rprodukter> oblist = FXCollections.observableArrayList();
+		
+		try {
+			ResultSet rs3 = Main.getRS3();
+			
+			while(rs3.next()) {
+				oblist.add(new Rprodukter(rs3.getInt("TillægsproduktID"),
+					rs3.getFloat("Pris"),
+					rs3.getString("Navn"),
+					rs3.getBoolean("Aktiv")));
+			}
+		
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		col_TP.setCellValueFactory(cellData -> cellData.getValue().getNavn());
+		col_pris.setCellValueFactory(cellData -> cellData.getValue().getPris());
+
+
+		table_TPTV.setItems(oblist);
 	}
 }
