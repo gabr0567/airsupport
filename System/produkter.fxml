@@ -9,25 +9,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="706.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="82.0" prefWidth="158.0" style="-fx-border-color: #58b2dc; -fx-border-radius: 2; -fx-border-width: 2;" />
       <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Billet id:" />
       <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:" />
       <Text layoutX="65.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Text layoutX="62.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
-      <TableView layoutX="424.0" layoutY="36.0" prefHeight="238.0" prefWidth="267.0" visible="false">
+      <TableView layoutX="745.0" layoutY="36.0" prefHeight="399.0" prefWidth="544.0">
         <columns>
-          <TableColumn prefWidth="75.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Mad" />
-          <TableColumn prefWidth="95.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
-            <TableColumn prefWidth="93.5999755859375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
+          <TableColumn prefWidth="224.8001708984375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Mad" />
+          <TableColumn prefWidth="151.1998291015625" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
+            <TableColumn prefWidth="168.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
         </columns>
       </TableView>
-      <Button layoutX="564.0" layoutY="431.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="35.0" prefWidth="109.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Send faktura" textFill="WHITE">
+      <Button layoutX="1171.0" layoutY="680.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Send faktura" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
          </font></Button>
-      <Button layoutX="25.0" layoutY="431.0" mnemonicParsing="false" onAction="#switchToBilletter" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
+      <Button layoutX="25.0" layoutY="431.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -72,14 +72,32 @@
             <TableColumn prefWidth="93.5999755859375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
          </columns>
       </TableView>
-      <Pane layoutX="486.0" layoutY="305.0" prefHeight="98.0" prefWidth="188.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;">
+      <Pane layoutX="1046.0" layoutY="464.0" prefHeight="144.0" prefWidth="248.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;">
          <children>
-            <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ex moms:" wrappingWidth="109.60000000000014" />
-            <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moms:" wrappingWidth="76.63592529296875" />
-            <Text layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inkl moms:" wrappingWidth="83.9390869140625" />
-            <Text layoutX="82.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text layoutX="82.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text layoutX="82.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="36.486328125" />
+            <Text layoutX="15.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ex moms:" wrappingWidth="109.60000000000014">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+            <Text layoutX="14.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moms:" wrappingWidth="76.63592529296875">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+            <Text layoutX="14.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inkl moms:" wrappingWidth="96.7391357421875">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+            <Text layoutX="118.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+            <Text layoutX="117.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+            <Text layoutX="117.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="36.486328125">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
          </children>
       </Pane>
    </children>
