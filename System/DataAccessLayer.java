@@ -121,4 +121,14 @@ public class DataAccessLayer {
 				return null;
 			} 
 		}
+		public ResultSet getRS4() {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM Tillægsprodukter");
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
 }
