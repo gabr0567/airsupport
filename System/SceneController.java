@@ -45,7 +45,15 @@ public class SceneController {
 	private TableColumn<Rprodukter, String> col_TP;
 	@FXML
 	private TableColumn<Rprodukter, String> col_pris;
+	//Table Produkter
+	@FXML
+	private TableView<Produkter> table_produkter;
+	@FXML
+	private TableColumn<Produkter, String> col_produktpris;
+	@FXML 
+	private TableColumn<Produkter, String> col_produktmad;
 	
+
 	
 	
 	
@@ -170,7 +178,7 @@ public class SceneController {
 
 		table_billetter.setItems(oblist);
 	}
-	//knappen til at loade tillægsprodukter
+	//Nilaksan knappen til at loade tillægsprodukter
 	
 	public void loadTP(ActionEvent event)	{
 		ObservableList<Rprodukter> oblist = FXCollections.observableArrayList();
@@ -194,5 +202,31 @@ public class SceneController {
 
 
 		table_TPTV.setItems(oblist);
+	}
+	//Nilaksan
+	//Knappen til at loade tillægsprodukter under produkter.fxml
+	public void loadProdukt(ActionEvent event)	{
+		ObservableList<Produkter> oblist = FXCollections.observableArrayList();
+		
+		try {
+			ResultSet rs4 = Main.getRS4();
+			
+			while(rs4.next()) {
+				oblist.add(new Produkter(rs4.getInt("TillægsproduktID"),
+					rs4.getFloat("Pris"),
+					rs4.getString("Navn"),
+					rs4.getBoolean("Aktiv")));
+			}
+		
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		col_produktmad.setCellValueFactory(cellData -> cellData.getValue().getNavn());
+		col_produktpris.setCellValueFactory(cellData -> cellData.getValue().getPris());
+
+
+		table_produkter.setItems(oblist);
+
 	}
 }
