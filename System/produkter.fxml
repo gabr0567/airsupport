@@ -9,25 +9,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
       <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="82.0" prefWidth="158.0" style="-fx-border-color: #58b2dc; -fx-border-radius: 2; -fx-border-width: 2;" />
       <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Billet id:" />
       <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:" />
       <Text layoutX="65.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Text layoutX="62.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
-      <TableView layoutX="745.0" layoutY="36.0" prefHeight="399.0" prefWidth="544.0">
+      <TableView fx:id="table_produkter" layoutX="213.0" layoutY="22.0" prefHeight="618.0" prefWidth="821.0">
         <columns>
-          <TableColumn prefWidth="224.8001708984375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Mad" />
-          <TableColumn prefWidth="151.1998291015625" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
-            <TableColumn prefWidth="168.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
+          <TableColumn fx:id="col_produktmad" prefWidth="275.2000732421875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Produkter" />
+          <TableColumn fx:id="col_produktpris" prefWidth="349.5999450683594" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
+            <TableColumn prefWidth="196.800048828125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
         </columns>
       </TableView>
-      <Button layoutX="1171.0" layoutY="680.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Send faktura" textFill="WHITE">
+      <Button layoutX="1171.0" layoutY="680.0" mnemonicParsing="false" onAction="#loadFaktura" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Send faktura" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
-      <Button layoutX="25.0" layoutY="431.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
+      <Button layoutX="27.0" layoutY="718.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -43,35 +43,11 @@
                </font></Button>
          </children>
       </Pane>
-      <Button layoutX="293.0" layoutY="138.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Desserter" textFill="#58b2dc">
+      <Button layoutX="1214.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadProdukt" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se produkter" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="158.0" layoutY="138.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Drikkevarer" textFill="#58b2dc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="16.0" layoutY="138.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Mad" textFill="#58b2dc">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <TableView layoutX="424.0" layoutY="36.0" prefHeight="238.0" prefWidth="267.0" visible="false">
-         <columns>
-            <TableColumn prefWidth="75.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Drikkevarer" />
-            <TableColumn prefWidth="95.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
-            <TableColumn prefWidth="93.5999755859375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
-         </columns>
-      </TableView>
-      <TableView layoutX="425.0" layoutY="36.0" prefHeight="238.0" prefWidth="267.0" visible="false">
-         <columns>
-            <TableColumn prefWidth="75.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Desserter" />
-            <TableColumn prefWidth="95.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
-            <TableColumn prefWidth="93.5999755859375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
-         </columns>
-      </TableView>
       <Pane layoutX="1046.0" layoutY="464.0" prefHeight="144.0" prefWidth="248.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;">
          <children>
             <Text layoutX="15.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ex moms:" wrappingWidth="109.60000000000014">
