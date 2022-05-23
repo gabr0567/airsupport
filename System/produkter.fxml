@@ -23,7 +23,7 @@
             <TableColumn prefWidth="196.800048828125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
         </columns>
       </TableView>
-      <Button layoutX="1171.0" layoutY="680.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Send faktura" textFill="WHITE">
+      <Button layoutX="1171.0" layoutY="680.0" mnemonicParsing="false" onAction="#loadFaktura" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Send faktura" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>

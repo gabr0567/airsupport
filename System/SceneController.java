@@ -2,7 +2,7 @@ package application;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 
@@ -123,6 +123,25 @@ public class SceneController {
 		stage.show();
 		
 	}
+	
+	public void loadFaktura(ActionEvent event) throws IOException {
+		try {
+			
+			if ((new File("C:\\Users\\nilak\\Desktop\\Skrivebord\\test.pdf")).exists()) {
+		Process p = Runtime
+		   .getRuntime()
+		   .exec("rundll32 url.dll,FileProtocolHandler C:\\Users\\nilak\\Desktop\\Skrivebord\\test.pdf");
+		p.waitFor();
+			
+	} 	else {
+			System.out.println("Filen findes ikke");
+	}
+			System.out.println("Fakturaen er åbnet som pdf");
+	  } catch (Exception ex) {
+		ex.printStackTrace();
+  }
+
+}
 	
 	
 	//Indlæs de forskellige fly - Gabriel
