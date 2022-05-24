@@ -11,11 +11,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
-      <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="82.0" prefWidth="158.0" style="-fx-border-color: #58b2dc; -fx-border-radius: 2; -fx-border-width: 2;" />
+      <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="82.0" prefWidth="158.0" style="-fx-border-color: #58b2dc; -fx-border-radius: 2; -fx-border-width: 2;">
+         <children>
+            <Text layoutX="16.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:" />
+            <Text layoutX="16.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly nr:" />
+            <Text fx:id="fly_nr" layoutX="54.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children></Pane>
       <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Billet id:" />
-      <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:" />
       <Text layoutX="65.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text layoutX="62.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
+      <Text layoutX="62.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null" />
       <TableView fx:id="table_produkter" layoutX="213.0" layoutY="22.0" prefHeight="618.0" prefWidth="821.0">
         <columns>
           <TableColumn fx:id="col_produktmad" prefWidth="275.2000732421875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Produkter" />
@@ -27,7 +31,7 @@
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
-      <Button layoutX="27.0" layoutY="718.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
+      <Button layoutX="27.0" layoutY="718.0" mnemonicParsing="false" onAction="#SwitchToFly1" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

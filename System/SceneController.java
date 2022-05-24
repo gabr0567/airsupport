@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SceneController {
@@ -53,9 +54,9 @@ public class SceneController {
 	@FXML 
 	private TableColumn<Produkter, String> col_produktmad;
 	
-
-	
-	
+	//Tekst
+	@FXML
+	private Text fly_nr;
 	
 	private Stage stage;
 	private Scene scene;
@@ -117,6 +118,32 @@ public class SceneController {
 	//Skift til scenen "produkter.fxml" - Nilaksan
 	public void SwitchToProdukt(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("produkter.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		selectFly();
+	}
+	public void SwitchToFly1(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("fly.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		
+	}
+	
+	public void SwitchToTur(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("tilkald.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		
+	}
+	
+	public void SwitchToTurTilbage(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -222,6 +249,16 @@ public class SceneController {
 
 		table_TPTV.setItems(oblist);
 	}
+	
+	public void selectFly() {
+		ObservableList <Fly> flylist;
+		
+		flylist = table_fly.getSelectionModel().getSelectedItems();
+		
+		Main.selectPlane(Integer.parseInt(flylist.get(0).getId().get()));
+		System.out.println(flylist.get(0).getId().get());
+	}
+	
 	//Nilaksan
 	//Knappen til at loade tillægsprodukter under produkter.fxml
 	public void loadProdukt(ActionEvent event)	{
@@ -246,6 +283,8 @@ public class SceneController {
 
 
 		table_produkter.setItems(oblist);
-
+		
+		fly_nr.setText(String.valueOf(Main.currentPlane()));
+		System.out.println(Main.currentPlane());
 	}
 }

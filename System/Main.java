@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 
 public class Main extends Application {
 	private static DataAccessLayer db;
+	private static int currentPlane;
+	
 	@Override
 	
 	//Indlæs den første scene - Gabriel
@@ -44,6 +46,16 @@ public class Main extends Application {
 	//Nilaksan // Produkter
 	public static ResultSet getRS4() {
 		return db.getRS4();
+	}
+	
+	//Gabriel
+	public static void selectPlane(int id) {
+		currentPlane = id;
+	}
+	
+	//Gabriel
+	public static int currentPlane() {
+		return currentPlane;
 	}
 }
 	
