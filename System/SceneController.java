@@ -123,6 +123,32 @@ public class SceneController {
 		stage.show();
 		
 	}
+	public void SwitchToFly1(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("fly.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		
+	}
+	
+	public void SwitchToTur(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("tilkald.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		
+	}
+	
+	public void SwitchToTurTilbage(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		
+	}
 	
 	public void loadFaktura(ActionEvent event) throws IOException {
 		try {

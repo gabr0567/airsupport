@@ -27,7 +27,7 @@
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
-      <Button layoutX="27.0" layoutY="718.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
+      <Button layoutX="27.0" layoutY="718.0" mnemonicParsing="false" onAction="#SwitchToFly1" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
