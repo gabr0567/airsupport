@@ -29,8 +29,6 @@ public class SceneController {
 	private TableColumn<Fly,String> col_flynavn;
 	@FXML
 	private TableColumn<Fly,String> col_flypladser;
-	@FXML
-	private TableColumn<Fly,String> col_flystatus;
 	
 	@FXML
 	private TableView<Billetter> table_billetter;
@@ -124,32 +122,7 @@ public class SceneController {
 		stage.show();
 		selectFly();
 	}
-	public void SwitchToFly1(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("fly.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		
-	}
 	
-	public void SwitchToTur(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("tilkald.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		
-	}
-	
-	public void SwitchToTurTilbage(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		
-	}
 	public void SwitchToFly1(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("fly.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -205,8 +178,8 @@ public class SceneController {
 			ResultSet rs = Main.getRS();
 			
 			while(rs.next()) {
-				if (rs.getBoolean("status") == true) {
-					oblist.add(new Fly(rs.getInt("FlyID"),rs.getString("navn"),rs.getInt("pladser"),rs.getBoolean("status")));
+				if (rs.getBoolean("Status") == true) {
+					oblist.add(new Fly(rs.getInt("FlyID"),rs.getString("navn"),rs.getInt("pladser"),rs.getBoolean("Status"),rs.getString("Placering")));
 				}
 			}
 		
@@ -217,7 +190,6 @@ public class SceneController {
 		col_flynr.setCellValueFactory(cellData -> cellData.getValue().getId());
 		col_flynavn.setCellValueFactory(cellData -> cellData.getValue().getNavn());
 		col_flypladser.setCellValueFactory(cellData -> cellData.getValue().getPladser());
-		col_flystatus.setCellValueFactory(cellData -> cellData.getValue().getStatus());
 
 		table_fly.setItems(oblist);
 	}
