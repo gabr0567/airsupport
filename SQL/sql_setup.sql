@@ -8,14 +8,13 @@ DROP TABLE [Airsupport].[dbo].[Fly]
 
 CREATE TABLE [Airsupport].[dbo].[Billet]
 (BilletID int NOT NULL,
-KundeID int NOT NULL,
 Navn varchar(100) NOT NULL,
 Til varchar(100) NOT NULL,
 Fly int NOT NULL,
 Dato date NOT NULL,
-Sæde int NOT NULL,
-Gate varchar(100) NOT NULL,
 afgang time(7) NOT NULL,
+tlf varchar(100) NOT NULL,
+Email varchar(100) NOT NULL,
 CONSTRAINT PK_Billet_BilletID PRIMARY KEY CLUSTERED 
 (BilletID)
 )
@@ -50,20 +49,21 @@ CONSTRAINT PK_nuværendeTillægsprodukter_NTID PRIMARY KEY CLUSTERED
 (NTID)
 )
 
-CREATE TABLE [Airsupport].[dbo].[Kunde]
-(KundeID int NOT NULL,
-Navn varchar(100) NOT NULL,
-tlf int NOT NULL,
-Email varchar(100) NOT NULL,
-CONSTRAINT PK_Kunde_KundeID PRIMARY KEY CLUSTERED 
-(KundeID)
-)
+--CREATE TABLE [Airsupport].[dbo].[Kunde]
+--(KundeID int NOT NULL,
+--Navn varchar(100) NOT NULL,
+--tlf int NOT NULL,
+--Email varchar(100) NOT NULL,
+--CONSTRAINT PK_Kunde_KundeID PRIMARY KEY CLUSTERED 
+--(KundeID)
+--)
 
 CREATE TABLE [Airsupport].[dbo].[Fly]
 (FlyID int NOT NULL,
 Navn varchar(100) NOT NULL,
 Placering char(3) NOT NULL,
 Pladser int NOT NULL,
+Status Bit NOT NULL,
 CONSTRAINT PK_Fly_FlyID PRIMARY KEY CLUSTERED 
 (FlyID)
 )
@@ -74,13 +74,12 @@ VALUES (1,40,'Allergi', 1), (2, 55, 'Glutenfri', 0),(3, 90, 'Diabetikeren', 1),(
 (8, 350, 'Udsigt og information', 1),(9, 50, 'Is', 1),(10, 650, 'Fotografi', 1),
 (11, 850, 'Speciel bagage håndtering', 1)
 
-INSERT INTO [Airsupport].[dbo].[Fly] (FlyID, Navn, Pladser, Placering)
-VALUES (1, 'Cessna Citation V', 8, 'BLL'), (2, 'Cessna Citation V', 8, 'BLL'), (3, 'Cessna Citation V', 8, 'BLL'),
-(4, 'Cessna Citation V', 8, 'BLL'), (5, 'Cessna Citation V', 8, 'STN')
+INSERT INTO [Airsupport].[dbo].[Fly] (FlyID, Navn, Pladser, Placering, Status)
+VALUES (1, 'Cessna Citation V', 8, 'BLL', 1), (2, 'Cessna Citation V', 8, 'BLL', 1), (3, 'Cessna Citation V', 8, 'BLL', 1),
+(4, 'Cessna Citation V', 8, 'BLL', 1), (5, 'Cessna Citation V', 8, 'STN', 0)
 
-INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, KundeID, Navn, Til, Fly, Dato, Sæde, Gate, afgang)
-VALUES (412,124,'John', 'CPH', 3, '2022-5-20', 4, '3B', '18:00:00')
-
+INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang, tlf, Email)
+VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk' )
 
 
 
