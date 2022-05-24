@@ -7,14 +7,16 @@ public class Fly {
 	private int FlyID;
 	private String navn;
 	private int pladser;
-	private boolean status;
+	private boolean Status;
+	private String Placering;
 	
 	//Gabriel
-	public Fly(int FlyID, String navn, int pladser, boolean status) {
+	public Fly(int FlyID, String navn, int pladser, boolean Status, String Placering) {
 		this.FlyID = FlyID;
 		this.navn = navn;
 		this.pladser = pladser;
-		this.status = status;
+		this.Status = Status;
+		this.Placering = Placering;
 	}
 	//Gabriel
 	public StringProperty getId() {
@@ -33,14 +35,18 @@ public class Fly {
 	}
 	//Gabriel
 	public StringProperty getStatus() {
-		StringProperty var = new SimpleStringProperty(""+status);
+		StringProperty var = new SimpleStringProperty(""+Status);
 		return var;
 	}
+	
+	public StringProperty getPlacering() {
+		StringProperty var = new SimpleStringProperty(Placering);
+		return var;
+	}
+	
 	//Gabriel
 	@Override
 	public String toString() {
-		return "[Hold: hold_id=" + FlyID +
-				", navn=" + navn +
-				", point=" + status + "]";
+		return "";
 	}
 }
