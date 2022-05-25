@@ -61,14 +61,14 @@ public class Main extends Application {
 	}
 
 	//Gabriel
-  public static void selectPlane(int id) {
-      currentPlane = id;
-  }
+  	public static void selectPlane(int id) {
+      		currentPlane = id;
+  	}
     
-    //Gabriel
-  public static int currentPlane() {
-      return currentPlane;
-  }
+   	 //Gabriel
+  	public static int currentPlane() {
+      		return currentPlane;
+  	}
 
 	
 	public static String currentNavn() {
