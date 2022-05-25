@@ -10,9 +10,12 @@ import javafx.scene.Parent;
 public class Main extends Application {
 	private static DataAccessLayer db;
 	private static int currentPlane;
+	private static String currentNavn;
+	private static String currentTlf;
+	private static String currentEmail;
+	private static String currentCVR;
 	
 	@Override
-	
 	//Indlæs den første scene - Gabriel
 	public void start(Stage primaryStage) {
 		try {
@@ -56,6 +59,17 @@ public class Main extends Application {
 	//Gabriel
 	public static int currentPlane() {
 		return currentPlane;
+	}
+	
+	public static String currentNavn() {
+		return currentNavn;
+	}
+	
+	public static void selectCustomer(String navn, String tlf, String email, String CVR) {
+		currentNavn = navn;
+		currentTlf = tlf;
+		currentEmail = email;
+		currentCVR = CVR;
 	}
 }
 	
