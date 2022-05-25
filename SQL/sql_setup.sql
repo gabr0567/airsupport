@@ -1,3 +1,6 @@
+CREATE DATABASE Airsupport
+GO
+
 DROP TABLE [Airsupport].[dbo].[Billet]
 DROP TABLE [Airsupport].[dbo].[Faktura]
 DROP TABLE [Airsupport].[dbo].[Tillægsprodukter]
