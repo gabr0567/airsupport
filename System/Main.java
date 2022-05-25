@@ -10,9 +10,13 @@ import javafx.scene.Parent;
 public class Main extends Application {
 	private static DataAccessLayer db;
 	private static int currentPlane;
+	private static String currentNavn;
+	private static String currentTlf;
+	private static String currentEmail;
+	private static String currentCVR;
 	
 	@Override
-	//Indlæs den første scene - Gabriel
+	//IndlÃ¦s den fÃ¸rste scene - Gabriel
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
@@ -55,17 +59,28 @@ public class Main extends Application {
 		return db.getRS6();
 		
 	}
+
 	//Gabriel
-    public static void selectPlane(int id) {
-        currentPlane = id;
-    }
+  public static void selectPlane(int id) {
+      currentPlane = id;
+  }
     
     //Gabriel
-    public static int currentPlane() {
-        return currentPlane;
-    }
-
-    }
+  public static int currentPlane() {
+      return currentPlane;
+  }
 
 	
+	public static String currentNavn() {
+		return currentNavn;
+	}
+	
+	public static void selectCustomer(String navn, String tlf, String email, String CVR) {
+		currentNavn = navn;
+		currentTlf = tlf;
+		currentEmail = email;
+		currentCVR = CVR;
+	}
+}
+
 	

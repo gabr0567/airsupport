@@ -14,8 +14,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -72,6 +75,17 @@ public class SceneController {
 	//Tekst
 	@FXML
 	private Text fly_nr;
+	@FXML
+	private Text kunde_navn;
+	
+	@FXML
+	private TextField inputNavn;
+	@FXML
+	private TextField inputTlf;
+	@FXML
+	private TextField inputEmail;
+	@FXML 
+	private TextField inputCVR;
 	
 	private Stage stage;
 	private Scene scene;
@@ -105,6 +119,7 @@ public class SceneController {
 	
 	//Skift til scenen "nybillet.fxml" - Gabriel
 	public void switchToNyBillet(ActionEvent event) throws IOException {
+		selectFly();
 		Parent root = FXMLLoader.load(getClass().getResource("nybillet.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -113,15 +128,23 @@ public class SceneController {
 	}
 	
 	//Skift til scenen "produkter.fxml" - Gabriel
+	
 	public void switchToProdukter(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("produkter.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();	
+		if (selectKunde()) {
+			Parent root = FXMLLoader.load(getClass().getResource("produkter.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} else {
+			Alert errorAlert = new Alert(AlertType.ERROR);
+			errorAlert.setHeaderText("Nogle ting mangler at blive udfyldt");
+			errorAlert.setContentText("Tjek at navn, tlf og email er udfyldt!");
+			errorAlert.showAndWait();
+		}
 	}
 	
-	//Skift til scenen "produkter.fxml" - Gabriel
+	//Skift til scenen "Rprodukter.fxml" - Gabriel
 	public void switchToRprodukter(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("Rprodukter.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -129,17 +152,9 @@ public class SceneController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
-	//Skift til scenen "produkter.fxml" - Nilaksan
-	public void SwitchToProdukt(ActionEvent event) throws IOException {
-		selectFly();
-		Parent root = FXMLLoader.load(getClass().getResource("produkter.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
+
 	//Nilaksan
+
 	public void SwitchToFly1(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("fly.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -179,7 +194,7 @@ public class SceneController {
 	} 	else {
 			System.out.println("Filen findes ikke");
 	}
-			System.out.println("Fakturaen er åbnet som pdf");
+			System.out.println("Fakturaen er Ã¥bnet som pdf");
 	  } catch (Exception ex) {
 		ex.printStackTrace();
   }
@@ -187,7 +202,7 @@ public class SceneController {
 }
 	
 	
-	//Indlæs de forskellige fly - Gabriel
+	//IndlÃ¦s de forskellige fly - Gabriel
 	public void loadFly(ActionEvent event)	{
 		ObservableList<Fly> oblist = FXCollections.observableArrayList();
 		
@@ -224,7 +239,7 @@ public class SceneController {
 						rs2.getString("Til"), 
 						rs2.getInt("Fly"), 
 						rs2.getDate("Dato"), 
-						rs2.getInt("Sæde"), 
+						rs2.getInt("SÃ¦de"), 
 						rs2.getString("Gate"), 
 						rs2.getTimestamp("afgang")));
 			}
@@ -239,7 +254,7 @@ public class SceneController {
 
 		table_billetter.setItems(oblist);
 	}
-	//Nilaksan knappen til at loade tillægsprodukter
+	//Nilaksan knappen til at loade tillÃ¦gsprodukter
 	
 	public void loadTP(ActionEvent event)	{
 		ObservableList<Rprodukter> oblist = FXCollections.observableArrayList();
@@ -248,7 +263,7 @@ public class SceneController {
 			ResultSet rs3 = Main.getRS3();
 			
 			while(rs3.next()) {
-				oblist.add(new Rprodukter(rs3.getInt("TillægsproduktID"),
+				oblist.add(new Rprodukter(rs3.getInt("TillÃ¦gsproduktID"),
 					rs3.getFloat("Pris"),
 					rs3.getString("Navn"),
 					rs3.getBoolean("Aktiv")));
@@ -271,11 +286,19 @@ public class SceneController {
 		flylist = table_fly.getSelectionModel().getSelectedItems();
 		
 		Main.selectPlane(Integer.parseInt(flylist.get(0).getId().get()));
-		System.out.println(flylist.get(0).getId().get());
+	}
+	
+	public boolean selectKunde() {
+		if (inputNavn.getText() == "" || inputTlf.getText() == "" || inputEmail.getText() == "") {
+			return false;
+		} else {
+			Main.selectCustomer(inputNavn.getText(),inputTlf.getText(),inputEmail.getText(), inputCVR.getText());
+			return true;
+		}
 	}
 	
 	//Nilaksan
-	//Knappen til at loade tillægsprodukter under produkter.fxml
+	//Knappen til at loade tillÃ¦gsprodukter under produkter.fxml
 	public void loadProdukt(ActionEvent event)	{
 		ObservableList<Produkter> oblist = FXCollections.observableArrayList();
 		
@@ -283,7 +306,7 @@ public class SceneController {
 			ResultSet rs4 = Main.getRS4();
 			
 			while(rs4.next()) {
-				oblist.add(new Produkter(rs4.getInt("TillægsproduktID"),
+				oblist.add(new Produkter(rs4.getInt("TillÃ¦gsproduktID"),
 					rs4.getFloat("Pris"),
 					rs4.getString("Navn"),
 					rs4.getBoolean("Aktiv")));
@@ -299,8 +322,9 @@ public class SceneController {
 
 		table_produkter.setItems(oblist);
 		
+		//Gabriel
 		fly_nr.setText(String.valueOf(Main.currentPlane()));
-		System.out.println(Main.currentPlane());
+		kunde_navn.setText(String.valueOf(Main.currentNavn()));
 	}
 	//Nilaksan //Load fly under tilkald.fxml
 	public void loadTur(ActionEvent event)	{
