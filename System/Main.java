@@ -12,7 +12,6 @@ public class Main extends Application {
 	private static int currentPlane;
 	
 	@Override
-	
 	//Indlæs den første scene - Gabriel
 	public void start(Stage primaryStage) {
 		try {
@@ -47,15 +46,26 @@ public class Main extends Application {
 	public static ResultSet getRS4() {
 		return db.getRS4();
 	}
-	
-	//Gabriel
-	public static void selectPlane(int id) {
-		currentPlane = id;
+	//Nilaksan //Tilkald
+	public static ResultSet getRS5() {
+		return db.getRS5();
 	}
-	
-	//Gabriel
-	public static int currentPlane() {
-		return currentPlane;
+	//Nilaksan //Tilkald 2
+	public static ResultSet getRS6() {
+		return db.getRS6();
+		
 	}
-}
+	//Gabriel
+    public static void selectPlane(int id) {
+        currentPlane = id;
+    }
+    
+    //Gabriel
+    public static int currentPlane() {
+        return currentPlane;
+    }
+
+    }
+
+	
 	

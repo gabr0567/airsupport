@@ -38,7 +38,7 @@ public class Fly {
 		StringProperty var = new SimpleStringProperty(""+Status);
 		return var;
 	}
-	
+	//Nilaksan
 	public StringProperty getPlacering() {
 		StringProperty var = new SimpleStringProperty(Placering);
 		return var;

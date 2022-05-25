@@ -52,6 +52,23 @@ public class SceneController {
 	@FXML 
 	private TableColumn<Produkter, String> col_produktmad;
 	
+	@FXML
+	private TableView<Fly> table_tilkald;
+	@FXML
+	private TableColumn<Fly, String> col_flyid;
+	@FXML
+	private TableColumn<Fly, String> col_model;
+	@FXML
+	private TableColumn<Fly, String> col_lokation;
+	@FXML
+	private TableView<Fly> table_send;
+	@FXML
+	private TableColumn<Fly, String> col_sendFly;
+	@FXML
+	private TableColumn<Fly, String> col_sendModel;
+	@FXML
+	private TableColumn<Fly,String> col_sendLokation;
+	
 	//Tekst
 	@FXML
 	private Text fly_nr;
@@ -115,14 +132,14 @@ public class SceneController {
 	
 	//Skift til scenen "produkter.fxml" - Nilaksan
 	public void SwitchToProdukt(ActionEvent event) throws IOException {
+		selectFly();
 		Parent root = FXMLLoader.load(getClass().getResource("produkter.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
-		selectFly();
 	}
-	
+	//Nilaksan
 	public void SwitchToFly1(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("fly.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -131,8 +148,8 @@ public class SceneController {
 		stage.show();
 		
 	}
-	
-	public void SwitchToTur(ActionEvent event) throws IOException {
+	//Nilaksan
+	public void switchToTur(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("tilkald.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -140,7 +157,7 @@ public class SceneController {
 		stage.show();
 		
 	}
-	
+	//Nilaksan
 	public void SwitchToTurTilbage(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -285,4 +302,50 @@ public class SceneController {
 		fly_nr.setText(String.valueOf(Main.currentPlane()));
 		System.out.println(Main.currentPlane());
 	}
+	//Nilaksan //Load fly under tilkald.fxml
+	public void loadTur(ActionEvent event)	{
+		ObservableList<Fly> oblist = FXCollections.observableArrayList();
+		ObservableList<Fly> oblist2 = FXCollections.observableArrayList();
+		
+		try {
+			ResultSet rs5 = Main.getRS5();
+			ResultSet rs6 = Main.getRS6();
+
+			
+			while(rs5.next()) {
+				if(rs5.getBoolean("Status") != true) {
+					oblist.add(new Fly(rs5.getInt("FlyID"),
+					rs5.getString("Navn"),
+					rs5.getInt("pladser"),
+					rs5.getBoolean("Status"),
+					rs5.getString("Placering")));
+					
+				}
+			}
+			while(rs6.next()) {
+				if(rs6.getBoolean("Status")) {
+					oblist2.add(new Fly(rs6.getInt("FlyID"),
+					rs6.getString("Navn"),
+					rs6.getInt("pladser"),
+					rs6.getBoolean("Status"),
+					rs6.getString("Placering")));
+				}
+			}
+		
+		} 	catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		col_flyid.setCellValueFactory(cellData -> cellData.getValue().getId());
+		col_model.setCellValueFactory(cellData -> cellData.getValue().getNavn());
+		
+		col_sendFly.setCellValueFactory(cellData -> cellData.getValue().getId());	
+		col_sendModel.setCellValueFactory(cellData -> cellData.getValue().getNavn());
+		col_sendLokation.setCellValueFactory(cellData -> cellData.getValue().getPladser());
+
+		table_tilkald.setItems(oblist);
+		
+		table_send.setItems(oblist2);
+	}
 }
+	
