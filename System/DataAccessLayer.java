@@ -131,4 +131,26 @@ public class DataAccessLayer {
 				return null;
 			} 
 		}
+		//Tilkald
+		public ResultSet getRS5() {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM Fly");
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
+		//Tilkald 2
+		public ResultSet getRS6() {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM Fly");
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
 }

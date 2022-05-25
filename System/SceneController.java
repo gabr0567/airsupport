@@ -55,6 +55,23 @@ public class SceneController {
 	@FXML 
 	private TableColumn<Produkter, String> col_produktmad;
 	
+	@FXML
+	private TableView<Fly> table_tilkald;
+	@FXML
+	private TableColumn<Fly, String> col_flyid;
+	@FXML
+	private TableColumn<Fly, String> col_model;
+	@FXML
+	private TableColumn<Fly, String> col_lokation;
+	@FXML
+	private TableView<Fly> table_send;
+	@FXML
+	private TableColumn<Fly, String> col_sendFly;
+	@FXML
+	private TableColumn<Fly, String> col_sendModel;
+	@FXML
+	private TableColumn<Fly,String> col_sendLokation;
+	
 	//Tekst
 	@FXML
 	private Text fly_nr;
@@ -135,7 +152,9 @@ public class SceneController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
+	//Nilaksan
+
 	public void SwitchToFly1(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("fly.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -144,8 +163,8 @@ public class SceneController {
 		stage.show();
 		
 	}
-	
-	public void SwitchToTur(ActionEvent event) throws IOException {
+	//Nilaksan
+	public void switchToTur(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("tilkald.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -153,7 +172,7 @@ public class SceneController {
 		stage.show();
 		
 	}
-	
+	//Nilaksan
 	public void SwitchToTurTilbage(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -175,7 +194,7 @@ public class SceneController {
 	} 	else {
 			System.out.println("Filen findes ikke");
 	}
-			System.out.println("Fakturaen er åbnet som pdf");
+			System.out.println("Fakturaen er Ã¥bnet som pdf");
 	  } catch (Exception ex) {
 		ex.printStackTrace();
   }
@@ -183,7 +202,7 @@ public class SceneController {
 }
 	
 	
-	//Indlæs de forskellige fly - Gabriel
+	//IndlÃ¦s de forskellige fly - Gabriel
 	public void loadFly(ActionEvent event)	{
 		ObservableList<Fly> oblist = FXCollections.observableArrayList();
 		
@@ -220,7 +239,7 @@ public class SceneController {
 						rs2.getString("Til"), 
 						rs2.getInt("Fly"), 
 						rs2.getDate("Dato"), 
-						rs2.getInt("Sæde"), 
+						rs2.getInt("SÃ¦de"), 
 						rs2.getString("Gate"), 
 						rs2.getTimestamp("afgang")));
 			}
@@ -235,7 +254,7 @@ public class SceneController {
 
 		table_billetter.setItems(oblist);
 	}
-	//Nilaksan knappen til at loade tillægsprodukter
+	//Nilaksan knappen til at loade tillÃ¦gsprodukter
 	
 	public void loadTP(ActionEvent event)	{
 		ObservableList<Rprodukter> oblist = FXCollections.observableArrayList();
@@ -244,7 +263,7 @@ public class SceneController {
 			ResultSet rs3 = Main.getRS3();
 			
 			while(rs3.next()) {
-				oblist.add(new Rprodukter(rs3.getInt("TillægsproduktID"),
+				oblist.add(new Rprodukter(rs3.getInt("TillÃ¦gsproduktID"),
 					rs3.getFloat("Pris"),
 					rs3.getString("Navn"),
 					rs3.getBoolean("Aktiv")));
@@ -279,7 +298,7 @@ public class SceneController {
 	}
 	
 	//Nilaksan
-	//Knappen til at loade tillægsprodukter under produkter.fxml
+	//Knappen til at loade tillÃ¦gsprodukter under produkter.fxml
 	public void loadProdukt(ActionEvent event)	{
 		ObservableList<Produkter> oblist = FXCollections.observableArrayList();
 		
@@ -287,7 +306,7 @@ public class SceneController {
 			ResultSet rs4 = Main.getRS4();
 			
 			while(rs4.next()) {
-				oblist.add(new Produkter(rs4.getInt("TillægsproduktID"),
+				oblist.add(new Produkter(rs4.getInt("TillÃ¦gsproduktID"),
 					rs4.getFloat("Pris"),
 					rs4.getString("Navn"),
 					rs4.getBoolean("Aktiv")));
@@ -307,4 +326,50 @@ public class SceneController {
 		fly_nr.setText(String.valueOf(Main.currentPlane()));
 		kunde_navn.setText(String.valueOf(Main.currentNavn()));
 	}
+	//Nilaksan //Load fly under tilkald.fxml
+	public void loadTur(ActionEvent event)	{
+		ObservableList<Fly> oblist = FXCollections.observableArrayList();
+		ObservableList<Fly> oblist2 = FXCollections.observableArrayList();
+		
+		try {
+			ResultSet rs5 = Main.getRS5();
+			ResultSet rs6 = Main.getRS6();
+
+			
+			while(rs5.next()) {
+				if(rs5.getBoolean("Status") != true) {
+					oblist.add(new Fly(rs5.getInt("FlyID"),
+					rs5.getString("Navn"),
+					rs5.getInt("pladser"),
+					rs5.getBoolean("Status"),
+					rs5.getString("Placering")));
+					
+				}
+			}
+			while(rs6.next()) {
+				if(rs6.getBoolean("Status")) {
+					oblist2.add(new Fly(rs6.getInt("FlyID"),
+					rs6.getString("Navn"),
+					rs6.getInt("pladser"),
+					rs6.getBoolean("Status"),
+					rs6.getString("Placering")));
+				}
+			}
+		
+		} 	catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		col_flyid.setCellValueFactory(cellData -> cellData.getValue().getId());
+		col_model.setCellValueFactory(cellData -> cellData.getValue().getNavn());
+		
+		col_sendFly.setCellValueFactory(cellData -> cellData.getValue().getId());	
+		col_sendModel.setCellValueFactory(cellData -> cellData.getValue().getNavn());
+		col_sendLokation.setCellValueFactory(cellData -> cellData.getValue().getPladser());
+
+		table_tilkald.setItems(oblist);
+		
+		table_send.setItems(oblist2);
+	}
 }
+	

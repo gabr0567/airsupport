@@ -18,32 +18,32 @@
             <Font name="Arial Bold" size="67.0" />
          </font>
       </Text>
-      <ImageView fitHeight="148.0" fitWidth="156.0" layoutX="28.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="148.0" fitWidth="156.0" layoutX="197.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@fly.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="89.0" fitWidth="103.0" layoutX="378.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="89.0" fitWidth="103.0" layoutX="898.0" layoutY="338.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@sky.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="89.0" fitWidth="117.0" layoutX="102.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="89.0" fitWidth="117.0" layoutX="227.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@sky.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="89.0" fitWidth="117.0" layoutX="484.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="89.0" fitWidth="117.0" layoutX="1156.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@sky.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="89.0" fitWidth="117.0" layoutX="178.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="89.0" fitWidth="117.0" layoutX="325.0" layoutY="559.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@sky.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="ImagineView1" fitHeight="148.0" fitWidth="156.0" layoutX="393.0" layoutY="238.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ImagineView1" fitHeight="148.0" fitWidth="156.0" layoutX="1118.0" layoutY="421.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@fly.png" />
          </image>
@@ -58,7 +58,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="608.0" layoutY="415.0" mnemonicParsing="false" onAction="#SwitchToTur" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-border-color: #0e4e6c; -fx-border-width: 2; -fx-border-radius: 4;" text="Tur/Retur" textFill="#0e4e6c">
+      <Button layoutX="608.0" layoutY="415.0" mnemonicParsing="false" onAction="#switchToTur" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #ffffff; -fx-border-color: #0e4e6c; -fx-border-width: 2; -fx-border-radius: 4;" text="Tur/Retur" textFill="#0e4e6c">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
