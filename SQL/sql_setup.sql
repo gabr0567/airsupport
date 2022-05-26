@@ -5,8 +5,8 @@ DROP TABLE [Airsupport].[dbo].[Billet]
 DROP TABLE [Airsupport].[dbo].[Faktura]
 DROP TABLE [Airsupport].[dbo].[Tillægsprodukter]
 DROP TABLE [Airsupport].[dbo].[NuværendeTillægsprodukter]
-DROP TABLE [Airsupport].[dbo].[Kunde]
 DROP TABLE [Airsupport].[dbo].[Fly]
+DROP TABLE [Airsupport].[dbo].[Destination]
 
 
 CREATE TABLE [Airsupport].[dbo].[Billet]
@@ -46,7 +46,7 @@ CONSTRAINT PK_Tillægsprodukter_tillægsproduktID PRIMARY KEY CLUSTERED
 CREATE TABLE [Airsupport].[dbo].[NuværendeTillægsprodukter]
 (NTID int NOT NULL,
 tillægsprodukt int NOT NULL,
-FakturaID int NOT NULL,
+BilletID int NOT NULL,
 Pris float NOT NULL,
 UnderFlyvning Bit NOT NULL,
 CONSTRAINT PK_nuværendeTillægsprodukter_NTID PRIMARY KEY CLUSTERED 
@@ -72,6 +72,15 @@ CONSTRAINT PK_Fly_FlyID PRIMARY KEY CLUSTERED
 (FlyID)
 )
 
+CREATE TABLE [Airsupport].[dbo].[Destination]
+(DestinationID int NOT NULL,
+Destination varchar(100) NOT NULL,
+Abbreviation char(3) NOT NULL
+CONSTRAINT PK_Destination_DestinationID PRIMARY KEY CLUSTERED 
+(DestinationID)
+
+)
+
 INSERT INTO [Airsupport].[dbo].[Tillægsprodukter] (TillægsproduktID, Pris,Navn,Aktiv)
 VALUES (1,40,'Allergi', 1), (2, 55, 'Glutenfri', 0),(3, 90, 'Diabetikeren', 1),(4, 250, 'Luksus', 0),
 (5, 25, 'Sodavand', 1),(6, 125, 'Pinot Noir de France 2020', 1),(7, 500, 'Huber Eiswein 2016', 1),
@@ -86,6 +95,10 @@ VALUES (1, 'Cessna Citation V', 8, 'BLL', 1), (2, 'Cessna Citation V', 8, 'BLL',
 
 INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang, tlf, Email, CVR)
 VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk',0)
+
+INSERT INTO [Airsupport].[dbo].[Destination] (DestinationID, Destination, Abbreviation)
+VALUES (1, 'London Stansted Airport', 'STN')
+
 
 
 
