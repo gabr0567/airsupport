@@ -1,7 +1,11 @@
 package application;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.Time;
+import java.util.Random;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -11,9 +15,12 @@ public class Main extends Application {
 	private static DataAccessLayer db;
 	private static int currentPlane;
 	private static String currentNavn;
-	private static String currentTlf;
+	private static int currentTlf;
 	private static String currentEmail;
-	private static String currentCVR;
+	private static int currentCVR;
+	private static String currentTil;
+	private static Date currentDato;
+	private static Time currentAfgang;
 	
 	@Override
 	//Indlæs den første scene - Gabriel
@@ -57,30 +64,53 @@ public class Main extends Application {
 	//Nilaksan //Tilkald 2
 	public static ResultSet getRS6() {
 		return db.getRS6();
-		
+	}
+	
+	//Gabriel
+	public static ResultSet getRS7() {
+		return db.getRS7();
 	}
 
 	//Gabriel
-  	public static void selectPlane(int id) {
+  	public static void selectPlane(int id, String til, Date dato, Time afgang) {
       		currentPlane = id;
+      		currentTil = til;
+      		currentDato = dato;
+      		currentAfgang = afgang;
   	}
     
-   	 //Gabriel
+   	//Gabriel
   	public static int currentPlane() {
-      		return currentPlane;
+      		return currentPlane;				
   	}
-
-	
+  	
+  	//Gabriel
 	public static String currentNavn() {
 		return currentNavn;
 	}
 	
-	public static void selectCustomer(String navn, String tlf, String email, String CVR) {
+	//Gabriel
+	public static void selectCustomer(String navn, String tlf, String email, int CVR) {
 		currentNavn = navn;
-		currentTlf = tlf;
+		currentTlf = Integer.parseInt(tlf);
 		currentEmail = email;
 		currentCVR = CVR;
 	}
-}
-
 	
+	//Gabriel
+	public static void insertBillet(ObservableList<Rprodukter> oblistprod) {
+		Random rand = new Random();
+		db.executeInsertBillet(rand.nextInt(999999999), 
+				currentNavn, currentTil, currentPlane, 
+				currentDato, currentAfgang, currentTlf, 
+				currentEmail, currentCVR);
+		for (int i = 0; i < oblistprod.size(); i++) {
+			db.executeInsertNuvProdukter(rand.nextInt(999999999),
+					oblistprod.get(i).getNavn().get(),
+					oblistprod.get(i).getProd(),
+					oblistprod.get(i).getID(),
+					Float.parseFloat(oblistprod.get(i).getPris().get()),
+					Integer.parseInt(oblistprod.get(i).getAntal().get()));
+		}
+	}
+}

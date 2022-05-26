@@ -1,5 +1,8 @@
 package application;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 public class DataAccessLayer {
 	private Connection connection;
@@ -152,5 +155,46 @@ public class DataAccessLayer {
 				e.printStackTrace();
 				return null;
 			} 
+		}
+		
+		//Gabriel
+		public boolean executeInsertBillet(int billetID, 
+				String currentNavn, String currentTil, int currentPlane, 
+				Date currentDato, Time currentAfgang, int currentTlf, 
+				String currentEmail, int currentCVR) {
+	  		int id = executeInsert("INSERT INTO Billet VALUES (" +
+	  		billetID + ", '" +
+			currentNavn + "', '" +
+			currentTil + "', " +
+			currentPlane + ", '" +
+			currentDato + "', '" +
+			currentAfgang + "', '" +
+			currentTlf + "', '" +
+			currentEmail + "', " + 
+			currentCVR + ")");
+	  		return (id != 0);
+		}
+		
+		//Gabriel
+		public ResultSet getRS7() {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM Destination");
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
+
+		public boolean executeInsertNuvProdukter(int ID, String Navn, int prod, int billetID, float pris, int antal) {
+	  		int id = executeInsert("INSERT INTO NuværendeTillægsprodukter VALUES (" +
+	  		ID + ", '" +
+			Navn + "', " +
+			prod + ", " +
+			billetID + ", " +
+			pris + ", " +
+			antal + ")");
+	  		return (id != 0);
 		}
 }
