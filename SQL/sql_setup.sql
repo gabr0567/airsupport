@@ -46,7 +46,7 @@ CONSTRAINT PK_Tillægsprodukter_tillægsproduktID PRIMARY KEY CLUSTERED
 CREATE TABLE [Airsupport].[dbo].[NuværendeTillægsprodukter]
 (NTID int NOT NULL,
 tillægsprodukt int NOT NULL,
-FakturaID int NOT NULL,
+BilletID int NOT NULL,
 Pris float NOT NULL,
 UnderFlyvning Bit NOT NULL,
 CONSTRAINT PK_nuværendeTillægsprodukter_NTID PRIMARY KEY CLUSTERED 
