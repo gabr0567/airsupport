@@ -4,6 +4,7 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -18,14 +19,13 @@
             <Text fx:id="fly_nr" layoutX="50.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
             <Text fx:id="kunde_navn" layoutX="54.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="109.60000000000014" />
          </children></Pane>
-      <TableView fx:id="table_produkter" layoutX="213.0" layoutY="22.0" prefHeight="618.0" prefWidth="821.0">
+      <TableView fx:id="table_produkter" layoutX="198.0" layoutY="142.0" prefHeight="422.0" prefWidth="317.0">
         <columns>
-          <TableColumn fx:id="col_produktmad" prefWidth="275.2000732421875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Produkter" />
-          <TableColumn fx:id="col_produktpris" prefWidth="349.5999450683594" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
-            <TableColumn prefWidth="196.800048828125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" />
+          <TableColumn fx:id="col_produkt" prefWidth="224.26669311523438" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Produkter" />
+          <TableColumn fx:id="col_produktpris" prefWidth="92.53335571289062" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
         </columns>
       </TableView>
-      <Button layoutX="1171.0" layoutY="680.0" mnemonicParsing="false" onAction="#loadFaktura" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Send faktura" textFill="WHITE">
+      <Button layoutX="1171.0" layoutY="680.0" mnemonicParsing="false" onAction="#createBillet" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Opret billet" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
@@ -78,5 +78,17 @@
                </font></Text>
          </children>
       </Pane>
+      <TableView fx:id="table_produkter2" layoutX="614.0" layoutY="138.0" prefHeight="430.0" prefWidth="430.0">
+         <columns>
+            <TableColumn fx:id="col_produkt2" prefWidth="224.26669311523438" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Produkter" />
+            <TableColumn fx:id="col_produktpris2" prefWidth="128.00006103515625" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
+            <TableColumn fx:id="col_produktantal" prefWidth="77.60003662109375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Antal" />
+         </columns>
+      </TableView>
+      <Text layoutX="294.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkter at vælge imellem" />
+      <Text layoutX="725.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valgte produkter" />
+      <TextField fx:id="inputAntal" layoutX="198.0" layoutY="608.0" />
+      <Text layoutX="201.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal:" />
+      <Button layoutX="357.0" layoutY="608.0" mnemonicParsing="false" onAction="#insertValgt" text="Indsæt" />
    </children>
 </AnchorPane>

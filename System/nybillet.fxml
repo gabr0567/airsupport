@@ -14,13 +14,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Text layoutX="474.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ex moms:" wrappingWidth="70.39999999999986" />
       <Button layoutX="21.0" layoutY="342.0" mnemonicParsing="false" onAction="#switchToFly" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Text layoutX="552.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="32.799999999999955" />
       <Text layoutX="52.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:" wrappingWidth="32.799999999999955" />
       <Text layoutX="52.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tlfnr:" wrappingWidth="28.32421875" />
       <Text layoutX="52.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="32.799999999999955" />

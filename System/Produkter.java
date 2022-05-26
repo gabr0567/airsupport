@@ -12,9 +12,10 @@ public class Produkter {
 	private float Pris;
 	private String Navn;
 	private boolean Aktiv;
+	private boolean UnderFlyvning;
 	
 	
-	public Produkter(int TillægsproduktID, float Pris, String Navn, boolean Aktiv){
+	public Produkter(int TillægsproduktID, float Pris, String Navn, boolean Aktiv, boolean UnderFlyvning){
 		this.TillægsproduktID = TillægsproduktID;
 		this.Pris = Pris;
 		this.Navn = Navn;
@@ -31,6 +32,8 @@ public class Produkter {
 		return var;
 	}
 	
-	
-	
+	public StringProperty getID() {
+		StringProperty var = new SimpleStringProperty(""+TillægsproduktID);
+		return var;
+	}
 }
