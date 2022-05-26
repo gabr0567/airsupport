@@ -39,16 +39,18 @@ CREATE TABLE [Airsupport].[dbo].[Tillægsprodukter]
 Pris float NOT NULL,
 Navn varchar(100) NOT NULL,
 Aktiv Bit NOT NULL,
+UnderFlyvning Bit NOT NULL,
 CONSTRAINT PK_Tillægsprodukter_tillægsproduktID PRIMARY KEY CLUSTERED 
 (tillægsproduktID)
 )
 
 CREATE TABLE [Airsupport].[dbo].[NuværendeTillægsprodukter]
 (NTID int NOT NULL,
+Navn varchar(100) NOT NULL,
 tillægsprodukt int NOT NULL,
 BilletID int NOT NULL,
 Pris float NOT NULL,
-UnderFlyvning Bit NOT NULL,
+Antal int NOT NULL,
 CONSTRAINT PK_nuværendeTillægsprodukter_NTID PRIMARY KEY CLUSTERED 
 (NTID)
 )
@@ -81,11 +83,12 @@ CONSTRAINT PK_Destination_DestinationID PRIMARY KEY CLUSTERED
 
 )
 
-INSERT INTO [Airsupport].[dbo].[Tillægsprodukter] (TillægsproduktID, Pris,Navn,Aktiv)
-VALUES (1,40,'Allergi', 1), (2, 55, 'Glutenfri', 0),(3, 90, 'Diabetikeren', 1),(4, 250, 'Luksus', 0),
-(5, 25, 'Sodavand', 1),(6, 125, 'Pinot Noir de France 2020', 1),(7, 500, 'Huber Eiswein 2016', 1),
-(8, 350, 'Udsigt og information', 1),(9, 50, 'Is', 1),(10, 650, 'Fotografi', 1),
-(11, 850, 'Speciel bagage håndtering', 1)
+
+INSERT INTO [Airsupport].[dbo].[Tillægsprodukter] (TillægsproduktID, Pris,Navn,Aktiv,UnderFlyvning)
+VALUES (1,40,'Allergi', 1,1), (2, 55, 'Glutenfri', 0,1),(3, 90, 'Diabetikeren', 1,0),(4, 250, 'Luksus', 0,0),
+(5, 25, 'Sodavand', 1,0),(6, 125, 'Pinot Noir de France 2020', 1,0),(7, 500, 'Huber Eiswein 2016', 1,1),
+(8, 350, 'Udsigt og information', 1,1),(9, 50, 'Is', 1,0),(10, 650, 'Fotografi', 1,1),
+(11, 850, 'Speciel bagage håndtering', 1,0)
 
 INSERT INTO [Airsupport].[dbo].[Fly] (FlyID, Navn, Pladser, Placering, Status)
 VALUES (1, 'Cessna Citation V', 8, 'BLL', 1), (2, 'Cessna Citation V', 8, 'BLL', 1), (3, 'Cessna Citation V', 8, 'BLL', 1),
