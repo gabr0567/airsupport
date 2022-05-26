@@ -18,6 +18,7 @@ Dato date NOT NULL,
 afgang time(7) NOT NULL,
 tlf varchar(100) NOT NULL,
 Email varchar(100) NOT NULL,
+CVR int NOT NULL,
 CONSTRAINT PK_Billet_BilletID PRIMARY KEY CLUSTERED 
 (BilletID)
 )
@@ -81,11 +82,10 @@ INSERT INTO [Airsupport].[dbo].[Fly] (FlyID, Navn, Pladser, Placering, Status)
 VALUES (1, 'Cessna Citation V', 8, 'BLL', 1), (2, 'Cessna Citation V', 8, 'BLL', 1), (3, 'Cessna Citation V', 8, 'BLL', 1),
 (4, 'Cessna Citation V', 8, 'BLL', 1), (5, 'Cessna Citation V', 8, 'STN', 0)
 
-INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, KundeID, Navn, Til, Fly, Dato, Sæde, Gate, afgang)
-VALUES (412,124,'John', 'CPH', 3, '2022-5-20', 4, '3B', '18:00:00')
 
-INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang, tlf, Email)
-VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk' )
+
+INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang, tlf, Email, CVR)
+VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk',0)
 
 
 
