@@ -2,7 +2,6 @@ CREATE DATABASE Airsupport
 GO
 
 DROP TABLE [Airsupport].[dbo].[Billet]
-DROP TABLE [Airsupport].[dbo].[Faktura]
 DROP TABLE [Airsupport].[dbo].[Tillægsprodukter]
 DROP TABLE [Airsupport].[dbo].[NuværendeTillægsprodukter]
 DROP TABLE [Airsupport].[dbo].[Fly]
@@ -21,17 +20,6 @@ Email varchar(100) NOT NULL,
 CVR int NOT NULL,
 CONSTRAINT PK_Billet_BilletID PRIMARY KEY CLUSTERED 
 (BilletID)
-)
-
-CREATE TABLE [Airsupport].[dbo].[Faktura]
-(FakturaID int NOT NULL,
-KundeID int NOT NULL,
-ExMoms float NOT NULL,
-InklMoms float NOT NULL,
-Destination varchar(100) NOT NULL,
-CVR int,
-CONSTRAINT PK_Faktura_FakturaID PRIMARY KEY CLUSTERED 
-(FakturaID)
 )
 
 CREATE TABLE [Airsupport].[dbo].[Tillægsprodukter]
@@ -54,15 +42,6 @@ Antal int NOT NULL,
 CONSTRAINT PK_nuværendeTillægsprodukter_NTID PRIMARY KEY CLUSTERED 
 (NTID)
 )
-
---CREATE TABLE [Airsupport].[dbo].[Kunde]
---(KundeID int NOT NULL,
---Navn varchar(100) NOT NULL,
---tlf int NOT NULL,
---Email varchar(100) NOT NULL,
---CONSTRAINT PK_Kunde_KundeID PRIMARY KEY CLUSTERED 
---(KundeID)
---)
 
 CREATE TABLE [Airsupport].[dbo].[Fly]
 (FlyID int NOT NULL,
