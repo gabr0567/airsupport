@@ -16,8 +16,8 @@
          <children>
             <Text layoutX="16.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:" />
             <Text layoutX="16.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly nr:" />
-            <Text fx:id="fly_nr" layoutX="50.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Text fx:id="kunde_navn" layoutX="54.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="109.60000000000014" />
+            <Text fx:id="fly_nr" layoutX="49.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="146.21484375" />
+            <Text fx:id="kunde_navn" layoutX="54.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="109.60000000000014" />
          </children></Pane>
       <TableView fx:id="table_produkter" layoutX="198.0" layoutY="142.0" prefHeight="422.0" prefWidth="317.0">
         <columns>
@@ -64,15 +64,15 @@
                <font>
                   <Font size="19.0" />
                </font></Text>
-            <Text layoutX="118.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="inklMoms" layoutX="117.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="120.486328125">
                <font>
                   <Font size="19.0" />
                </font></Text>
-            <Text layoutX="117.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="moms" layoutX="117.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="120.486328125">
                <font>
                   <Font size="19.0" />
                </font></Text>
-            <Text layoutX="117.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="36.486328125">
+            <Text fx:id="exMoms" layoutX="117.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="120.486328125">
                <font>
                   <Font size="19.0" />
                </font></Text>
@@ -89,6 +89,6 @@
       <Text layoutX="725.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valgte produkter" />
       <TextField fx:id="inputAntal" layoutX="198.0" layoutY="608.0" />
       <Text layoutX="201.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal:" />
-      <Button layoutX="357.0" layoutY="608.0" mnemonicParsing="false" onAction="#insertValgt" text="Indsæt" />
+      <Button layoutX="357.0" layoutY="608.0" mnemonicParsing="false" onAction="#insertValgt" text="Tilføj" />
    </children>
 </AnchorPane>

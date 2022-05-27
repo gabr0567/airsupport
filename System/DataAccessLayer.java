@@ -197,4 +197,9 @@ public class DataAccessLayer {
 			antal + ")");
 	  		return (id != 0);
 		}
+
+		public boolean executePlaneFalse(int currentPlane) {
+			boolean id = executeUpdate("UPDATE Fly SET Status = 0 WHERE FlyID = " + currentPlane);
+			return (id);
+		}
 }

@@ -21,6 +21,7 @@ public class Main extends Application {
 	private static String currentTil;
 	private static Date currentDato;
 	private static Time currentAfgang;
+	private static int currentBilletID;
 	
 	@Override
 	//Indlæs den første scene - Gabriel
@@ -100,17 +101,22 @@ public class Main extends Application {
 	//Gabriel
 	public static void insertBillet(ObservableList<Rprodukter> oblistprod) {
 		Random rand = new Random();
-		db.executeInsertBillet(rand.nextInt(999999999), 
+		currentBilletID = rand.nextInt(999999999);
+		
+		db.executeInsertBillet(currentBilletID, 
 				currentNavn, currentTil, currentPlane, 
 				currentDato, currentAfgang, currentTlf, 
 				currentEmail, currentCVR);
+		
 		for (int i = 0; i < oblistprod.size(); i++) {
 			db.executeInsertNuvProdukter(rand.nextInt(999999999),
 					oblistprod.get(i).getNavn().get(),
 					oblistprod.get(i).getProd(),
-					oblistprod.get(i).getID(),
+					currentBilletID,
 					Float.parseFloat(oblistprod.get(i).getPris().get()),
 					Integer.parseInt(oblistprod.get(i).getAntal().get()));
 		}
+		
+		db.executePlaneFalse(currentPlane);
 	}
 }

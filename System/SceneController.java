@@ -126,6 +126,14 @@ public class SceneController {
 	@FXML
 	private TableColumn <Airport, String> col_abbreviation;
 	
+	//moms
+	@FXML
+	private Text exMoms;
+	@FXML
+	private Text moms;
+	@FXML
+	private Text inklMoms;
+	
 	private Stage stage;
 	private Scene scene;
 	
@@ -448,6 +456,8 @@ public class SceneController {
 	
 	//Gabriel
 	public void insertValgt (ActionEvent event) {
+		float inklMomsInt = 0;
+		
 		ObservableList<Produkter> produktList;
 		
 		produktList = table_produkter.getSelectionModel().getSelectedItems();
@@ -469,6 +479,14 @@ public class SceneController {
 		col_produktantal.setCellValueFactory(cellData -> cellData.getValue().getAntal());
 
 		table_produkter2.setItems(oblistprod);
+		
+		for (int i = 0; i < oblistprod.size(); i++) {
+			float pris = Float.parseFloat(oblistprod.get(i).getPris().get());
+			inklMomsInt = inklMomsInt + pris;
+		}
+		exMoms.setText(""+inklMomsInt*0.8);
+		moms.setText(""+inklMomsInt*0.2);
+		inklMoms.setText(""+inklMomsInt);
 	}
 	
 	//Gabriel
