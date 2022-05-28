@@ -119,4 +119,14 @@ public class Main extends Application {
 		
 		db.executePlaneFalse(currentPlane);
 	}
+	public static void disableProd(int ID) {
+		db.disableProd(ID);
+	}
+	public static void updatePrice(int ID, float price) {
+		db.updatePrice(ID, price);
+	}
+	public static void newProduct(String name, float price) {
+		Random rand = new Random();
+		db.newProduct(rand.nextInt(999999999), name, price);
+	}
 }

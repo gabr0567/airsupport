@@ -186,7 +186,8 @@ public class DataAccessLayer {
 				return null;
 			} 
 		}
-
+		
+		//Gabriel
 		public boolean executeInsertNuvProdukter(int ID, String Navn, int prod, int billetID, float pris, int antal) {
 	  		int id = executeInsert("INSERT INTO NuværendeTillægsprodukter VALUES (" +
 	  		ID + ", '" +
@@ -197,9 +198,27 @@ public class DataAccessLayer {
 			antal + ")");
 	  		return (id != 0);
 		}
-
+		
+		//Gabriel
 		public boolean executePlaneFalse(int currentPlane) {
 			boolean id = executeUpdate("UPDATE Fly SET Status = 0 WHERE FlyID = " + currentPlane);
 			return (id);
+		}
+		
+		//Gabriel
+		public boolean disableProd(int ID) {
+			boolean id = executeUpdate("UPDATE Tillægsprodukter SET Aktiv = 0 WHERE TillægsproduktID = " + ID);
+			return (id);
+		}
+		
+		//Gabriel
+		public boolean updatePrice(int ID, float price) {
+			boolean id = executeUpdate("UPDATE Tillægsprodukter SET Pris = " + price +" WHERE TillægsproduktID = " + ID);
+			return (id);
+		}
+
+		public boolean newProduct(int ID, String name, float price) {
+			int id = executeInsert("INSERT INTO Tillægsprodukter VALUES (" + ID + ", " + price + ", '" + name + "', 1, 1)");
+			return (id != 0);
 		}
 }
