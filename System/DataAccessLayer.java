@@ -200,8 +200,8 @@ public class DataAccessLayer {
 		}
 		
 		//Gabriel
-		public boolean executePlaneFalse(int currentPlane) {
-			boolean id = executeUpdate("UPDATE Fly SET Status = 0 WHERE FlyID = " + currentPlane);
+		public boolean executePlaneFalse(int currentPlane, String currentTil) {
+			boolean id = executeUpdate("UPDATE Fly SET Status = 0, Placering = '" + currentTil + "' WHERE FlyID = " + currentPlane);
 			return (id);
 		}
 		
@@ -216,9 +216,19 @@ public class DataAccessLayer {
 			boolean id = executeUpdate("UPDATE Tillægsprodukter SET Pris = " + price +" WHERE TillægsproduktID = " + ID);
 			return (id);
 		}
-
+		//Gabriel
 		public boolean newProduct(int ID, String name, float price) {
 			int id = executeInsert("INSERT INTO Tillægsprodukter VALUES (" + ID + ", " + price + ", '" + name + "', 1, 1)");
 			return (id != 0);
+		}
+		//Gabriel
+		public boolean tilkald(int ID) {
+			boolean id = executeUpdate("UPDATE Fly SET Placering = 'BLL', Status = 1 WHERE FlyID = " + ID);
+			return (id);
+		}
+		//Gabriel
+		public boolean send(int flyID, String airport) {
+			boolean id = executeUpdate("UPDATE Fly SET Placering = '" + airport + "', Status = 0 WHERE FlyID = " + flyID);
+			return (id);
 		}
 }

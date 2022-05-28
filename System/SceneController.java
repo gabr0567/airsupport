@@ -61,6 +61,7 @@ public class SceneController {
 	@FXML 
 	private TableColumn<Produkter, String> col_produkt;
 	
+	//tilkald.fxml
 	//Tabel tilkald fly
 	@FXML
 	private TableView<Fly> table_tilkald;
@@ -70,7 +71,6 @@ public class SceneController {
 	private TableColumn<Fly, String> col_model;
 	@FXML
 	private TableColumn<Fly, String> col_lokation;
-	
 	//Tabel send fly
 	@FXML
 	private TableView<Fly> table_send;
@@ -78,8 +78,13 @@ public class SceneController {
 	private TableColumn<Fly, String> col_sendFly;
 	@FXML
 	private TableColumn<Fly, String> col_sendModel;
+	//Tabel lufthavne
 	@FXML
-	private TableColumn<Fly,String> col_sendLokation;
+	private TableView<Airport> table_airport;
+	@FXML
+	private TableColumn<Airport, String> col_airportName;
+	@FXML
+	private TableColumn<Airport, String> col_airportAbb;
 	
 	//Tekst
 	@FXML
@@ -419,12 +424,15 @@ public class SceneController {
 	public void loadTur(ActionEvent event)	{
 		ObservableList<Fly> oblist = FXCollections.observableArrayList();
 		ObservableList<Fly> oblist2 = FXCollections.observableArrayList();
-		
+		//Gabriel
+		ObservableList<Airport> oblist3 = FXCollections.observableArrayList();
+		//Nilaksan
 		try {
 			ResultSet rs5 = Main.getRS5();
 			ResultSet rs6 = Main.getRS6();
-
-			
+			//Gabriel
+			ResultSet rs = Main.getRS7();
+			//Nilaksan
 			while(rs5.next()) {
 				if(rs5.getBoolean("Status") != true) {
 					oblist.add(new Fly(rs5.getInt("FlyID"),
@@ -435,6 +443,7 @@ public class SceneController {
 					
 				}
 			}
+			
 			while(rs6.next()) {
 				if(rs6.getBoolean("Status")) {
 					oblist2.add(new Fly(rs6.getInt("FlyID"),
@@ -444,21 +453,29 @@ public class SceneController {
 					rs6.getString("Placering")));
 				}
 			}
-		
+			//Gabriel
+			while(rs.next()) {
+				oblist3.add(new Airport(rs.getInt("DestinationID"), rs.getString("Destination"), rs.getString("Abbreviation")));
+			}
+			//Nilaksan
 		} 	catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
+
 		col_flyid.setCellValueFactory(cellData -> cellData.getValue().getId());
 		col_model.setCellValueFactory(cellData -> cellData.getValue().getNavn());
+		col_lokation.setCellValueFactory(cellData -> cellData.getValue().getPlacering());
 		
 		col_sendFly.setCellValueFactory(cellData -> cellData.getValue().getId());	
 		col_sendModel.setCellValueFactory(cellData -> cellData.getValue().getNavn());
-		col_sendLokation.setCellValueFactory(cellData -> cellData.getValue().getPladser());
 
 		table_tilkald.setItems(oblist);
-		
 		table_send.setItems(oblist2);
+		//Gabriel
+		col_airportName.setCellValueFactory(cellData -> cellData.getValue().getDestination());
+		col_airportAbb.setCellValueFactory(cellData -> cellData.getValue().getAbbreviation());
+		
+		table_airport.setItems(oblist3);
 	}
 	
 	//Gabriel
@@ -530,6 +547,28 @@ public class SceneController {
 		Main.newProduct(addName.getText(), Float.parseFloat(addPrice.getText()));
 		
 		loadTP(event);
+	}
+	
+	//Gabriel
+	public void tilkald(ActionEvent event) {
+		ObservableList<Fly> flyList;
+		flyList = table_tilkald.getSelectionModel().getSelectedItems();
+		Main.tilkald(Integer.parseInt(flyList.get(0).getId().get()));
+		
+		loadTur(event);
+	}
+	
+	//Gabriel
+	public void send(ActionEvent event) {
+		ObservableList<Fly> flyList;
+		ObservableList<Airport> airportList;
+		flyList = table_send.getSelectionModel().getSelectedItems();
+		airportList = table_airport.getSelectionModel().getSelectedItems();
+		
+		Main.send(Integer.parseInt(flyList.get(0).getId().get()), 
+				airportList.get(0).getAbbreviation().get());
+		
+		loadTur(event);
 	}
 }
 	
