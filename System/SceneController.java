@@ -2,7 +2,6 @@ package application;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Random;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -48,11 +47,11 @@ public class SceneController {
 	
 	//table nuværendeprodukter
 	@FXML
-	private TableView<Rprodukter> table_TPTV;
+	private TableView<Produkter> table_TPTV;
 	@FXML
-	private TableColumn<Rprodukter, String> col_TP;
+	private TableColumn<Produkter, String> col_TP;
 	@FXML
-	private TableColumn<Rprodukter, String> col_pris;
+	private TableColumn<Produkter, String> col_pris;
 	
 	//Table Produkter
 	@FXML
@@ -133,6 +132,14 @@ public class SceneController {
 	private Text moms;
 	@FXML
 	private Text inklMoms;
+	
+	//Rprodukter.fxml
+	@FXML
+	private TextField newPrice;
+	@FXML
+	private TextField addName;
+	@FXML
+	private TextField addPrice;
 	
 	private Stage stage;
 	private Scene scene;
@@ -323,20 +330,20 @@ public class SceneController {
 	//Nilaksan knappen til at loade tillægsprodukter
 	
 	public void loadTP(ActionEvent event)	{
-		ObservableList<Rprodukter> oblist = FXCollections.observableArrayList();
+		ObservableList<Produkter> oblist = FXCollections.observableArrayList();
 		
 		try {
 			ResultSet rs3 = Main.getRS3();
 			
 			while(rs3.next()) {
-				oblist.add(new Rprodukter(rs3.getInt("TillægsproduktID"),
-					rs3.getString("Navn"),
-					rs3.getInt("tillægsprodukter"),
-					rs3.getInt("BilletID"),
-					rs3.getFloat("Pris"),
-					rs3.getInt("Antal")));
+				if (rs3.getBoolean("Aktiv")) {
+					oblist.add(new Produkter(rs3.getInt("TillægsproduktID"),
+						rs3.getInt("Pris"),
+						rs3.getString("Navn"),
+						rs3.getBoolean("Aktiv"),
+						rs3.getBoolean("UnderFlyvning")));
+				}
 			}
-			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -498,6 +505,31 @@ public class SceneController {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();	
+	}
+	
+	//Gabriel
+	public void disableProd(ActionEvent event) {
+		ObservableList<Produkter> produktList;
+		produktList = table_TPTV.getSelectionModel().getSelectedItems();
+		Main.disableProd(Integer.parseInt(produktList.get(0).getID().get()));
+		
+		loadTP(event);
+	}
+	
+	//Gabriel
+	public void updatePrice(ActionEvent event) {
+		ObservableList<Produkter> produktList;
+		produktList = table_TPTV.getSelectionModel().getSelectedItems();
+		Main.updatePrice(Integer.parseInt(produktList.get(0).getID().get()), Float.parseFloat(newPrice.getText()));
+		
+		loadTP(event);
+	}
+	
+	//Gabriel
+	public void newProduct(ActionEvent event) {
+		Main.newProduct(addName.getText(), Float.parseFloat(addPrice.getText()));
+		
+		loadTP(event);
 	}
 }
 	
