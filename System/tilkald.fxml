@@ -10,27 +10,27 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
       <Button layoutX="31.0" layoutY="720.0" mnemonicParsing="false" onAction="#SwitchToTurTilbage" prefHeight="34.0" prefWidth="106.0" text="Button" />
-      <Button layoutX="375.0" layoutY="509.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilkald" textFill="#58b2dc">
+      <Button layoutX="84.0" layoutY="452.0" mnemonicParsing="false" onAction="#tilkald" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilkald" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="773.0" layoutY="509.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Send" textFill="#58b2dc">
+      <Button layoutX="1238.0" layoutY="452.0" mnemonicParsing="false" onAction="#send" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Send" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="table_tilkald" layoutX="178.0" layoutY="88.0" prefHeight="356.0" prefWidth="444.0">
+      <TableView fx:id="table_tilkald" layoutX="84.0" layoutY="87.0" prefHeight="356.0" prefWidth="444.0">
         <columns>
           <TableColumn fx:id="col_flyid" prefWidth="115.20001220703125" text="FlyID" />
-          <TableColumn fx:id="col_model" prefWidth="327.9999694824219" text="Model" />
+          <TableColumn fx:id="col_model" prefWidth="154.4000244140625" text="Model" />
+            <TableColumn fx:id="col_lokation" prefWidth="172.0" text="Lokation" />
         </columns>
       </TableView>
-      <TableView fx:id="table_send" layoutX="764.0" layoutY="87.0" prefHeight="356.0" prefWidth="444.0">
+      <TableView fx:id="table_send" layoutX="642.0" layoutY="87.0" prefHeight="356.0" prefWidth="302.0">
          <columns>
             <TableColumn fx:id="col_sendFly" prefWidth="158.39996337890625" text="FlyID" />
             <TableColumn fx:id="col_sendModel" prefWidth="142.40008544921875" text="Model" />
-            <TableColumn fx:id="col_sendLokation" prefWidth="143.9998779296875" text="Lokation" />
          </columns>
       </TableView>
       <Button layoutX="1224.0" layoutY="41.0" mnemonicParsing="false" onAction="#loadTur" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se fly" textFill="#58b2dc">
@@ -38,14 +38,25 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Text layoutX="315.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly i udelandet">
+      <Text layoutX="223.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly i udelandet">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="925.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly i Billund">
+      <Text layoutX="727.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly i Billund">
          <font>
             <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <TableView fx:id="table_airport" layoutX="962.0" layoutY="87.0" prefHeight="356.0" prefWidth="372.0">
+        <columns>
+          <TableColumn fx:id="col_airportName" prefWidth="290.40008544921875" text="Lufthavn" />
+          <TableColumn fx:id="col_airportAbb" minWidth="0.0" prefWidth="79.9998779296875" text="Forkortelse" />
+        </columns>
+      </TableView>
+      <Text layoutX="1096.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lufthavne">
+         <font>
+            <Font size="24.0" />
          </font>
       </Text>
    </children>

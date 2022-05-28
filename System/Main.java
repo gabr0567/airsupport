@@ -5,6 +5,7 @@ import java.sql.Time;
 import java.util.Random;
 
 import javafx.application.Application;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -117,16 +118,26 @@ public class Main extends Application {
 					Integer.parseInt(oblistprod.get(i).getAntal().get()));
 		}
 		
-		db.executePlaneFalse(currentPlane);
+		db.executePlaneFalse(currentPlane, currentTil);
 	}
+	//Gabriel
 	public static void disableProd(int ID) {
 		db.disableProd(ID);
 	}
+	//Gabriel
 	public static void updatePrice(int ID, float price) {
 		db.updatePrice(ID, price);
 	}
+	//Gabriel
 	public static void newProduct(String name, float price) {
 		Random rand = new Random();
 		db.newProduct(rand.nextInt(999999999), name, price);
+	}
+	//Gabriel
+	public static void tilkald(int ID) {
+		db.tilkald(ID);
+	}
+	public static void send(int flyID, String airport) {
+		db.send(flyID, airport);
 	}
 }
