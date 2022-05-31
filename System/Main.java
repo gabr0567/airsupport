@@ -1,6 +1,10 @@
 package application;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Random;
 
@@ -157,5 +161,33 @@ public class Main extends Application {
 					Integer.parseInt(oblistprod.get(i).getAntal().get()));
 		}
 		db.endtBillet(currentBilletID);
+	}
+	//Gabriel
+	public static void createCSV() {
+		try {
+			String home = System.getProperty("user.home");
+			PrintWriter pw = new PrintWriter(new File(home + "\\Downloads\\tabel2.csv"));
+			StringBuilder sb = new StringBuilder();
+			ResultSet rs = db.getRS8();
+			
+			sb.append("ID, Navn, Pris, Antal\r\n");
+			
+			try {
+				while(rs.next()) {
+					sb.append(String.valueOf(rs.getInt("BilletID")) + ", " + 
+							rs.getString("Navn") + ", " + 
+							String.valueOf(rs.getFloat("Pris")) + ", " + 
+							String.valueOf(rs.getInt("Antal")) + "\r\n");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			pw.write(sb.toString());
+			pw.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }
