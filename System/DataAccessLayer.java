@@ -248,4 +248,26 @@ public class DataAccessLayer {
 			boolean id = executeUpdate("UPDATE Billet SET Endt = 1 WHERE BilletID = " + currentBilletID);
 			return (id);
 		}
+
+		public ResultSet getRS9(int ID) {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM NuværendeTillægsprodukter WHERE BilletID = " + ID);
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
+
+		public ResultSet getRS10(int ID) {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM Billet WHERE BilletID = " + ID);
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
 }

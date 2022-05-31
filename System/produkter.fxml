@@ -45,7 +45,7 @@
                </font></Button>
          </children>
       </Pane>
-      <Button layoutX="1214.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadProdukt" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se produkter" textFill="#58b2dc">
+      <Button layoutX="1214.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadProdukt2" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se produkter" textFill="#58b2dc">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

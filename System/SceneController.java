@@ -431,8 +431,10 @@ public class SceneController {
 
 
 		table_produkter.setItems(oblist);
-		
-		//Gabriel
+	}
+	
+	public void loadProdukt2(ActionEvent event) {
+		loadProdukt(event);
 		fly_nr.setText(String.valueOf(Main.currentPlane()));
 		kunde_navn.setText(String.valueOf(Main.currentNavn()));
 	}
@@ -590,12 +592,13 @@ public class SceneController {
 	//Gabriel
 	public void sendBillet(ActionEvent event) throws IOException {
 		Main.updateBillet(oblistprod);
+		Main.sendPDF();
 		//skift til menu
 		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
-		stage.show();	
+		stage.show();
 	}
 	
 	//Gabriel
