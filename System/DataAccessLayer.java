@@ -171,7 +171,7 @@ public class DataAccessLayer {
 			currentAfgang + "', '" +
 			currentTlf + "', '" +
 			currentEmail + "', " + 
-			currentCVR + ")");
+			currentCVR + ", 0)");
 	  		return (id != 0);
 		}
 		
@@ -229,6 +229,11 @@ public class DataAccessLayer {
 		//Gabriel
 		public boolean send(int flyID, String airport) {
 			boolean id = executeUpdate("UPDATE Fly SET Placering = '" + airport + "', Status = 0 WHERE FlyID = " + flyID);
+			return (id);
+		}
+
+		public boolean endtBillet(int currentBilletID) {
+			boolean id = executeUpdate("UPDATE Billet SET Endt = 1 WHERE BilletID = " + currentBilletID);
 			return (id);
 		}
 }

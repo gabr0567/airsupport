@@ -18,8 +18,9 @@ public class Billetter {
 	private String tlf;
 	private String email;
 	private int CVR;
+	private boolean Endt;
 	
-	public Billetter(int BilletID, String Navn, String Til, int Fly, Date Dato, Time afgang, String tlf, String email, int CVR) {
+	public Billetter(int BilletID, String Navn, String Til, int Fly, Date Dato, Time afgang, String tlf, String email, int CVR, boolean Endt) {
 		this.BilletID = BilletID;
 		this.Navn = Navn;
 		this.Til = Til;
@@ -28,6 +29,7 @@ public class Billetter {
 		this.afgang = afgang;
 		this.tlf = tlf;
 		this.CVR = CVR;
+		this.Endt = Endt;
 	}
 	
 	public StringProperty getBilletID() {

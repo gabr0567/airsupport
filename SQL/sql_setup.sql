@@ -77,7 +77,7 @@ VALUES (1, 'Cessna Citation V', 8, 'BLL', 1), (2, 'Cessna Citation V', 8, 'BLL',
 
 
 INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang, tlf, Email, CVR, Endt)
-VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk',0,1)
+VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk',0,0)
 
 INSERT INTO [Airsupport].[dbo].[Destination] (DestinationID, Destination, Abbreviation)
 VALUES (1, 'London Stansted Airport', 'STN')
