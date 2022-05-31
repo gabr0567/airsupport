@@ -57,7 +57,9 @@ CONSTRAINT PK_Fly_FlyID PRIMARY KEY CLUSTERED
 CREATE TABLE [Airsupport].[dbo].[Destination]
 (DestinationID int NOT NULL,
 Destination varchar(100) NOT NULL,
-Abbreviation char(3) NOT NULL
+Abbreviation char(3) NOT NULL,
+Tur float NOT NULL, 
+Retur float NOT NULL,
 CONSTRAINT PK_Destination_DestinationID PRIMARY KEY CLUSTERED 
 (DestinationID)
 
@@ -79,8 +81,8 @@ VALUES (1, 'Cessna Citation V', 8, 'BLL', 1), (2, 'Cessna Citation V', 8, 'BLL',
 INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang, tlf, Email, CVR, Endt)
 VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk',0,0)
 
-INSERT INTO [Airsupport].[dbo].[Destination] (DestinationID, Destination, Abbreviation)
-VALUES (1, 'London Stansted Airport', 'STN')
+INSERT INTO [Airsupport].[dbo].[Destination] (DestinationID, Destination, Abbreviation, Tur, Retur)
+VALUES (1, 'London Stansted Airport', 'STN', 249.95, 349.95)
 
 
 
