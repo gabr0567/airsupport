@@ -247,6 +247,20 @@ public class SceneController {
 		
 	}
 	
+	//Gabriel
+	public void switchToBilletter2(ActionEvent event) throws IOException {
+		ObservableList<Billetter> billetList;
+		
+		billetList = table_billetter.getSelectionModel().getSelectedItems();
+		
+		Main.setCurrentBillet(Integer.parseInt(billetList.get(0).getBilletID().get()));
+		Parent root = FXMLLoader.load(getClass().getResource("billetter2.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
 	public void loadFaktura(ActionEvent event) throws IOException {
 		try {
 			
@@ -311,17 +325,19 @@ public class SceneController {
 		
 		try {
 			ResultSet rs2 = Main.getRS2();
-			
 			while(rs2.next()) {
-				oblist.add(new Billetter(rs2.getInt("BilletID"), 
-						rs2.getString("Navn"), 
-						rs2.getString("Til"), 
-						rs2.getInt("Fly"), 
-						rs2.getDate("Dato"), 
-						rs2.getTime("afgang"), 
-						rs2.getString("tlf"), 
-						rs2.getString("email"),
-						rs2.getInt("CVR")));
+				if (rs2.getBoolean("Endt") == false) {
+					oblist.add(new Billetter(rs2.getInt("BilletID"), 
+							rs2.getString("Navn"), 
+							rs2.getString("Til"), 
+							rs2.getInt("Fly"), 
+							rs2.getDate("Dato"), 
+							rs2.getTime("afgang"), 
+							rs2.getString("tlf"), 
+							rs2.getString("email"),
+							rs2.getInt("CVR"),
+							rs2.getBoolean("Endt")));
+				}
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -569,6 +585,17 @@ public class SceneController {
 				airportList.get(0).getAbbreviation().get());
 		
 		loadTur(event);
+	}
+	
+	//Gabriel
+	public void sendBillet(ActionEvent event) throws IOException {
+		Main.updateBillet(oblistprod);
+		//skift til menu
+		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();	
 	}
 }
 	

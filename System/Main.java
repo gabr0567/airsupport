@@ -137,7 +137,25 @@ public class Main extends Application {
 	public static void tilkald(int ID) {
 		db.tilkald(ID);
 	}
+	//Gabriel
 	public static void send(int flyID, String airport) {
 		db.send(flyID, airport);
+	}
+	//Gabriel
+	public static void setCurrentBillet(int ID) {
+		currentBilletID = ID;
+	}
+	//Gabriel
+	public static void updateBillet(ObservableList<Rprodukter> oblistprod) {
+		Random rand = new Random();
+		for (int i = 0; i < oblistprod.size(); i++) {
+			db.executeInsertNuvProdukter(rand.nextInt(999999999),
+					oblistprod.get(i).getNavn().get(),
+					oblistprod.get(i).getProd(),
+					currentBilletID,
+					Float.parseFloat(oblistprod.get(i).getPris().get()),
+					Integer.parseInt(oblistprod.get(i).getAntal().get()));
+		}
+		db.endtBillet(currentBilletID);
 	}
 }
