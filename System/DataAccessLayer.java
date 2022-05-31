@@ -158,6 +158,18 @@ public class DataAccessLayer {
 		}
 		
 		//Gabriel
+		public ResultSet getRS8() {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM NuværendeTillægsprodukter");
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
+		
+		//Gabriel
 		public boolean executeInsertBillet(int billetID, 
 				String currentNavn, String currentTil, int currentPlane, 
 				Date currentDato, Time currentAfgang, int currentTlf, 

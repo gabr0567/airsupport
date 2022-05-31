@@ -597,5 +597,9 @@ public class SceneController {
 		stage.setScene(scene);
 		stage.show();	
 	}
-}
 	
+	//Gabriel
+	public void CSV(ActionEvent event) {
+		Main.createCSV();
+	}
+}
