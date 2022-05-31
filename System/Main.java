@@ -1,12 +1,21 @@
 package application;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import javafx.application.Application;
 import javafx.beans.property.StringProperty;
@@ -166,7 +175,7 @@ public class Main extends Application {
 	public static void createCSV() {
 		try {
 			String home = System.getProperty("user.home");
-			PrintWriter pw = new PrintWriter(new File(home + "\\Downloads\\tabel2.csv"));
+			PrintWriter pw = new PrintWriter(new File(home + "\\Downloads\\TProdukter.csv"));
 			StringBuilder sb = new StringBuilder();
 			ResultSet rs = db.getRS8();
 			
@@ -187,6 +196,42 @@ public class Main extends Application {
 			pw.close();
 			
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings({ "deprecation" })
+	public static void sendPDF() throws IOException {
+		try {
+			ResultSet rs = db.getRS9(currentBilletID);
+			ResultSet rs2 = db.getRS10(currentBilletID);
+			List<Rprodukter> listProd = new LinkedList();
+			List<Billetter> listBillet = new LinkedList(); 
+			
+			while(rs2.next()) {
+				listBillet.add(new Billetter(rs2.getInt("BilletID"),
+				rs2.getString("Navn"),
+				rs2.getString("Til"),
+				rs2.getInt("Fly"),
+				rs2.getDate("Dato"),
+				rs2.getTime("afgang"),
+				rs2.getString("tlf"),
+				rs2.getString("Email"),
+				rs2.getInt("CVR"),
+				rs2.getBoolean("Endt")));
+			}
+			
+			while(rs.next()) {
+				listProd.add(new Rprodukter (rs.getInt("NTID"),
+						rs.getString("Navn"),
+						rs.getInt("tillægsprodukt"),
+						rs.getInt("BilletID"),
+						rs.getFloat("Pris"),
+						rs.getInt("Antal")));
+			}
+			
+			PDFCreate.sendPDF(listProd, listBillet);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
