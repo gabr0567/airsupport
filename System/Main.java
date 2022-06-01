@@ -200,13 +200,12 @@ public class Main extends Application {
 		}
 	}
 	
-	@SuppressWarnings({ "deprecation" })
 	public static void sendPDF() throws IOException {
 		try {
 			ResultSet rs = db.getRS9(currentBilletID);
 			ResultSet rs2 = db.getRS10(currentBilletID);
-			List<Rprodukter> listProd = new LinkedList();
-			List<Billetter> listBillet = new LinkedList(); 
+			List<Rprodukter> listProd = new LinkedList<Rprodukter>();
+			List<Billetter> listBillet = new LinkedList<Billetter>(); 
 			
 			while(rs2.next()) {
 				listBillet.add(new Billetter(rs2.getInt("BilletID"),
