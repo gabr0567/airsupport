@@ -20,6 +20,7 @@ public class PDFCreate {
 		int height = 370;
 		int height2 = 0;
 		int fontSize = 14;
+		float total = 0;
 		for (int i = 0; i < listProd.size()+1; i++) {
 			height2 = height2 + 20;
 		}
@@ -103,26 +104,30 @@ public class PDFCreate {
 			content.moveTextPositionByAmount(325, 0);
 			content.drawString(pris);
 			ran = true;
+			total = total + Float.parseFloat(pris); 
 		}
 		
 		//Afsnit
 		content.setFont(font, 14);
 		content.moveTextPositionByAmount(-535,-20);
 		content.drawString("_________________________________________________________________________");
+		
+		total = total + Float.parseFloat(listBillet.get(0).getPris().get());
 		//At betale
 		content.setFont(font2, 14);
 		content.moveTextPositionByAmount(0,-20);
-		content.drawString("At betale: ");
+		content.drawString("At betale:  " + total + " DKK");
 		//Heraf moms
 		content.setFont(font2, 14);
 		content.moveTextPositionByAmount(0,-20);
-		content.drawString("Heraf moms: ");		
+		content.drawString("Heraf moms: " + total * 0.2 + " DKK");
 		
 		content.endText();
 		content.close();
-		  
+		
 		//path where the PDF file will be store  
-		pdfdoc.save("C:\\Users\\gabri\\Downloads\\Sample.pdf");  
+		String home = System.getProperty("user.home");
+		pdfdoc.save(home + "\\Downloads\\Sample.pdf");  
 		//prints the message if the PDF is created successfully   
 		System.out.println("PDF created");  
 		//closes the document  

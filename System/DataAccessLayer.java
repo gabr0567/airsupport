@@ -172,18 +172,20 @@ public class DataAccessLayer {
 		//Gabriel
 		public boolean executeInsertBillet(int billetID, 
 				String currentNavn, String currentTil, int currentPlane, 
-				Date currentDato, Time currentAfgang, int currentTlf, 
-				String currentEmail, int currentCVR) {
+				Date currentDato, Date currentDato2, Time currentAfgang, Time currentAfgang2, int currentTlf, 
+				String currentEmail, int currentCVR, float currentBilletPris) {
 	  		int id = executeInsert("INSERT INTO Billet VALUES (" +
 	  		billetID + ", '" +
 			currentNavn + "', '" +
 			currentTil + "', " +
 			currentPlane + ", '" +
 			currentDato + "', '" +
+			currentDato2 + "', '" +
 			currentAfgang + "', '" +
+			currentAfgang2 + "', '" +
 			currentTlf + "', '" +
 			currentEmail + "', " + 
-			currentCVR + ", 0)");
+			currentCVR + ", 0, " + currentBilletPris + ")");
 	  		return (id != 0);
 		}
 		

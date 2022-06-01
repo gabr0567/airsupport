@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 
 public class SceneController {
 	ObservableList<Rprodukter> oblistprod = FXCollections.observableArrayList();
+	private boolean retur = false;
 	
 	//Tabel fly
 	@FXML
@@ -121,6 +122,14 @@ public class SceneController {
 	private TextField HH;
 	@FXML
 	private TextField MM;
+	
+	//Dato og tid2
+	@FXML
+	private DatePicker dateSelection2;
+	@FXML
+	private TextField HH2;
+	@FXML
+	private TextField MM2;
 	
 	//Tabel destination
 	@FXML
@@ -327,16 +336,19 @@ public class SceneController {
 			ResultSet rs2 = Main.getRS2();
 			while(rs2.next()) {
 				if (rs2.getBoolean("Endt") == false) {
-					oblist.add(new Billetter(rs2.getInt("BilletID"), 
-							rs2.getString("Navn"), 
-							rs2.getString("Til"), 
-							rs2.getInt("Fly"), 
-							rs2.getDate("Dato"), 
-							rs2.getTime("afgang"), 
-							rs2.getString("tlf"), 
-							rs2.getString("email"),
+					oblist.add(new Billetter(rs2.getInt("BilletID"),
+							rs2.getString("Navn"),
+							rs2.getString("Til"),
+							rs2.getInt("Fly"),
+							rs2.getDate("Dato"),
+							rs2.getDate("Dato2"),
+							rs2.getTime("afgang"),
+							rs2.getTime("afgang2"),
+							rs2.getString("tlf"),
+							rs2.getString("Email"),
 							rs2.getInt("CVR"),
-							rs2.getBoolean("Endt")));
+							rs2.getBoolean("Endt"),
+							rs2.getFloat("billetPris")));
 				}
 			}
 		} catch (Exception ex) {
@@ -377,6 +389,7 @@ public class SceneController {
 	}
 	
 	//Gabriel
+	@SuppressWarnings("deprecation")
 	public boolean selectFly() {
 		ObservableList <Fly> flylist;
 		ObservableList <Airport> airportlist;
@@ -386,9 +399,14 @@ public class SceneController {
 		
 		try {
 			Date DatePickerDate = Date.valueOf(dateSelection.getValue());
-			@SuppressWarnings("deprecation")
 			Time tid = new Time(Integer.parseInt(HH.getText()),Integer.parseInt(MM.getText()),0);
-			Main.selectPlane(Integer.parseInt(flylist.get(0).getId().get()), airportlist.get(0).getAbbreviation().get(), DatePickerDate, tid);
+			Date DatePickerDate2 = new Date(0);
+			Time tid2 = new Time(0);
+			if (retur) {
+				DatePickerDate2 = Date.valueOf(dateSelection2.getValue());
+				tid2 = new Time(Integer.parseInt(HH2.getText()), Integer.parseInt(MM2.getText()),0);
+			}
+			Main.selectPlane(Integer.parseInt(flylist.get(0).getId().get()), airportlist.get(0).getAbbreviation().get(), DatePickerDate, DatePickerDate2, tid, tid2);
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -604,5 +622,20 @@ public class SceneController {
 	//Gabriel
 	public void CSV(ActionEvent event) {
 		Main.createCSV();
+	}
+	
+	//Gabriel
+	public void enableRetur(ActionEvent event) {
+		if (retur) {
+			dateSelection2.setDisable(true);
+			HH2.setDisable(true);
+			MM2.setDisable(true);
+			retur = false;
+		} else {
+			dateSelection2.setDisable(false);
+			HH2.setDisable(false);
+			MM2.setDisable(false);
+			retur = true;
+		}
 	}
 }

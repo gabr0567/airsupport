@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.WritableObjectValue;
 
 public class Billetter {
 	private int BilletID;
@@ -14,13 +15,16 @@ public class Billetter {
 	private String Til;
 	private int Fly;
 	private Date Dato;
+	private Date Dato2;
 	private Time afgang;
+	private Time afgang2;
 	private String tlf;
 	private String email;
 	private int CVR;
 	private boolean Endt;
+	private float billetPris;
 	
-	public Billetter(int BilletID, String Navn, String Til, int Fly, Date Dato, Time afgang, String tlf, String email, int CVR, boolean Endt) {
+	public Billetter(int BilletID, String Navn, String Til, int Fly, Date Dato, Date Dato2, Time afgang, Time afgang2, String tlf, String email, int CVR, boolean Endt, float billetPris) {
 		this.BilletID = BilletID;
 		this.Navn = Navn;
 		this.Til = Til;
@@ -31,6 +35,7 @@ public class Billetter {
 		this.email = email;
 		this.CVR = CVR;
 		this.Endt = Endt;
+		this.billetPris = billetPris;
 	}
 	
 	public StringProperty getBilletID() {
@@ -75,6 +80,11 @@ public class Billetter {
 	
 	public StringProperty getCVR() {
 		StringProperty var = new SimpleStringProperty(""+CVR);
+		return var;
+	}
+
+	public StringProperty getPris() {
+		StringProperty var = new SimpleStringProperty(""+billetPris);
 		return var;
 	}
 }
