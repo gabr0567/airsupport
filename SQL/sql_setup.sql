@@ -14,11 +14,14 @@ Navn varchar(100) NOT NULL,
 Til varchar(100) NOT NULL,
 Fly int NOT NULL,
 Dato date NOT NULL,
+Dato2 date,
 afgang time(0) NOT NULL,
+Afgang2 time(0),
 tlf varchar(100) NOT NULL,
 Email varchar(100) NOT NULL,
 CVR int NOT NULL,
 Endt Bit NOT NULL,
+billetPris float NOT NULL,
 CONSTRAINT PK_Billet_BilletID PRIMARY KEY CLUSTERED 
 (BilletID)
 )
@@ -78,8 +81,8 @@ VALUES (1, 'Cessna Citation V', 8, 'BLL', 1), (2, 'Cessna Citation V', 8, 'BLL',
 
 
 
-INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang, tlf, Email, CVR, Endt)
-VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk',0,0)
+INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang, tlf, Email, CVR, Endt,Afgang2, Dato2, billetPris)
+VALUES (412,'John', 'CPH', 3, '2022-5-20','18:00:00', '89304820','JohnJohnson@live.dk',0,0,'21:55:00','2022-5-27',359,9)
 
 INSERT INTO [Airsupport].[dbo].[Destination] (DestinationID, Destination, Abbreviation, Tur, Retur)
 VALUES (1, 'London Stansted Airport', 'STN', 249.95, 349.95)
