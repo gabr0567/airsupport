@@ -217,7 +217,7 @@ public class SceneController {
 		} else {
 			Alert errorAlert = new Alert(AlertType.ERROR);
 			errorAlert.setHeaderText("Nogle ting mangler at blive udfyldt");
-			errorAlert.setContentText("Tjek at navn, tlf og email er udfyldt!");
+			errorAlert.setContentText("Tjek at navn, tlf og email er udfyldt! (husk at skrive 0 ved CVR, hvis der ikke er CVR)");
 			errorAlert.showAndWait();
 		}
 	}
@@ -426,7 +426,7 @@ public class SceneController {
 	
 	//Gabriel
 	public boolean selectKunde() {
-		if (inputNavn.getText() == "" || inputTlf.getText() == "" || inputEmail.getText() == "") {
+		if (inputNavn.getText() == "" || inputTlf.getText() == "" || inputEmail.getText() == "" || inputCVR.getText() == "") {
 			return false;
 		} else {
 			Main.selectCustomer(inputNavn.getText(),inputTlf.getText(),inputEmail.getText(), Integer.parseInt(inputCVR.getText()));
