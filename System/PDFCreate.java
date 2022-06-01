@@ -7,6 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -24,6 +36,25 @@ public class PDFCreate {
 		int height2 = 0;
 		int fontSize = 14;
 		float total = 0;
+		
+		//Nilaksan
+        //authentication info
+        final String username = "noreplyAirFaktura@gmail.com";
+        final String password = "airfaktura";
+        String fromEmail = "noreplyAirFaktura@gmail.com";
+        String toEmail = listBillet.get(0).getEmail().get(); //mail den skal sendes til
+        
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+		
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username,password);
+            }
+        });
 		
 		DecimalFormat df = new DecimalFormat("#.##");
 		df.setRoundingMode(RoundingMode.CEILING);
@@ -81,7 +112,6 @@ public class PDFCreate {
 		content.moveTextPositionByAmount(0,-20);
 		content.drawString("Afgang: " + listBillet.get(0).getDato().get() + " " + listBillet.get(0).getTid().get());
 		String chkdate = "1970-01-01";
-		System.out.println(chkdate.equals(listBillet.get(0).getDato2().get()));
 		if (chkdate.equals(listBillet.get(0).getDato2().get()) != true) {
 			//Afgang retur
 			content.setFont(font2, 14);
@@ -144,12 +174,43 @@ public class PDFCreate {
 		content.endText();
 		content.close();
 		
-		//path where the PDF file will be store  
 		String home = System.getProperty("user.home");
-		pdfdoc.save(home + "\\Downloads\\Sample.pdf");  
-		//prints the message if the PDF is created successfully   
-		System.out.println("PDF created");  
-		//closes the document  
+		
+		pdfdoc.save(home + "\\Downloads\\Faktura.pdf");  
+		//printer at pdf er gemt på pc
 		pdfdoc.close(); 
+		
+	      //Start our mail message
+        MimeMessage msg = new MimeMessage(session);
+        try {
+            msg.setFrom(new InternetAddress(fromEmail));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            msg.setSubject("Billund Lufthavn Faktura"); //titel
+
+            Multipart emailContent = new MimeMultipart();
+
+            //Text body part
+            MimeBodyPart textBodyPart = new MimeBodyPart();
+            textBodyPart.setText("Billund Lufthavn Faktura"); //tekst besked
+
+            //Attachment body part.
+            MimeBodyPart pdfAttachment = new MimeBodyPart();
+            pdfAttachment.attachFile(home + "\\Downloads\\Faktura.pdf");
+            
+            //Attach body parts
+            emailContent.addBodyPart(textBodyPart);
+            emailContent.addBodyPart(pdfAttachment);
+
+            //Attach multipart to message
+            msg.setContent(emailContent);
+
+            Transport.send(msg);
+            System.out.println("Faktura sendt");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 	}
 }
