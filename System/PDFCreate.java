@@ -1,8 +1,11 @@
 package application;
 
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -13,7 +16,7 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import javafx.collections.ObservableList;
-
+//Gabriel
 public class PDFCreate {
 	@SuppressWarnings("deprecation")
 	public static void sendPDF(List<Rprodukter> listProd, List<Billetter> listBillet) throws IOException, SQLException {
@@ -21,6 +24,10 @@ public class PDFCreate {
 		int height2 = 0;
 		int fontSize = 14;
 		float total = 0;
+		
+		DecimalFormat df = new DecimalFormat("#.##");
+		df.setRoundingMode(RoundingMode.CEILING);
+		
 		for (int i = 0; i < listProd.size()+1; i++) {
 			height2 = height2 + 20;
 		}
@@ -73,6 +80,14 @@ public class PDFCreate {
 		content.setFont(font2, 14);
 		content.moveTextPositionByAmount(0,-20);
 		content.drawString("Afgang: " + listBillet.get(0).getDato().get() + " " + listBillet.get(0).getTid().get());
+		String chkdate = "1970-01-01";
+		System.out.println(chkdate.equals(listBillet.get(0).getDato2().get()));
+		if (chkdate.equals(listBillet.get(0).getDato2().get()) != true) {
+			//Afgang retur
+			content.setFont(font2, 14);
+			content.moveTextPositionByAmount(0,-20);
+			content.drawString("Afgang retur: " + listBillet.get(0).getDato2().get() + " " + listBillet.get(0).getTid2().get());
+		}
 		//Email
 		content.setFont(font2, 14);
 		content.moveTextPositionByAmount(0,-20);
@@ -111,8 +126,12 @@ public class PDFCreate {
 		content.setFont(font, 14);
 		content.moveTextPositionByAmount(-535,-20);
 		content.drawString("_________________________________________________________________________");
-		
 		total = total + Float.parseFloat(listBillet.get(0).getPris().get());
+		df.format(total);
+		//Pris for tur
+		content.setFont(font2, 14);
+		content.moveTextPositionByAmount(0,-20);
+		content.drawString("Pris for tur:  " + listBillet.get(0).getPris().get() + " DKK");
 		//At betale
 		content.setFont(font2, 14);
 		content.moveTextPositionByAmount(0,-20);
@@ -120,7 +139,7 @@ public class PDFCreate {
 		//Heraf moms
 		content.setFont(font2, 14);
 		content.moveTextPositionByAmount(0,-20);
-		content.drawString("Heraf moms: " + total * 0.2 + " DKK");
+		content.drawString("Heraf moms: " + df.format(total * 0.2) + " DKK");
 		
 		content.endText();
 		content.close();
