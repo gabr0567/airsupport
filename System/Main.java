@@ -34,8 +34,11 @@ public class Main extends Application {
 	private static int currentCVR;
 	private static String currentTil;
 	private static Date currentDato;
+	private static Date currentDato2;
 	private static Time currentAfgang;
+	private static Time currentAfgang2;
 	private static int currentBilletID;
+	private static float currentBilletPris;
 	
 	@Override
 	//Indlæs den første scene - Gabriel
@@ -87,11 +90,13 @@ public class Main extends Application {
 	}
 
 	//Gabriel
-  	public static void selectPlane(int id, String til, Date dato, Time afgang) {
+  	public static void selectPlane(int id, String til, Date dato, Date dato2, Time afgang, Time afgang2) {
       		currentPlane = id;
       		currentTil = til;
       		currentDato = dato;
+      		currentDato2 = dato2;
       		currentAfgang = afgang;
+      		currentAfgang2 = afgang2;
   	}
     
    	//Gabriel
@@ -119,8 +124,8 @@ public class Main extends Application {
 		
 		db.executeInsertBillet(currentBilletID, 
 				currentNavn, currentTil, currentPlane, 
-				currentDato, currentAfgang, currentTlf, 
-				currentEmail, currentCVR);
+				currentDato, currentDato2, currentAfgang, currentAfgang2, currentTlf, 
+				currentEmail, currentCVR, currentBilletPris);
 		
 		for (int i = 0; i < oblistprod.size(); i++) {
 			db.executeInsertNuvProdukter(rand.nextInt(999999999),
@@ -213,11 +218,14 @@ public class Main extends Application {
 				rs2.getString("Til"),
 				rs2.getInt("Fly"),
 				rs2.getDate("Dato"),
+				rs2.getDate("Dato2"),
 				rs2.getTime("afgang"),
+				rs2.getTime("afgang2"),
 				rs2.getString("tlf"),
 				rs2.getString("Email"),
 				rs2.getInt("CVR"),
-				rs2.getBoolean("Endt")));
+				rs2.getBoolean("Endt"),
+				rs2.getFloat("billetPris")));
 			}
 			
 			while(rs.next()) {
