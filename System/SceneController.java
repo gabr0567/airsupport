@@ -138,6 +138,10 @@ public class SceneController {
 	private TableColumn <Airport, String> col_destination;
 	@FXML
 	private TableColumn <Airport, String> col_abbreviation;
+	@FXML
+	private TableColumn <Airport, String> col_tur;
+	@FXML
+	private TableColumn <Airport, String> col_retur;
 	
 	//moms
 	@FXML
@@ -309,7 +313,7 @@ public class SceneController {
 			}
 			
 			while(rs2.next()) {
-				oblist2.add(new Airport(rs2.getInt("DestinationID"),rs2.getString("Destination"),rs2.getString("Abbreviation")));
+				oblist2.add(new Airport(rs2.getInt("DestinationID"),rs2.getString("Destination"),rs2.getString("Abbreviation"),rs2.getFloat("Tur"),rs2.getFloat("Retur")));
 			}
 		
 		} catch (Exception ex) {
@@ -322,6 +326,8 @@ public class SceneController {
 		
 		col_destination.setCellValueFactory(cellData -> cellData.getValue().getDestination());
 		col_abbreviation.setCellValueFactory(cellData -> cellData.getValue().getAbbreviation());
+		col_tur.setCellValueFactory(cellData -> cellData.getValue().getTur());
+		col_retur.setCellValueFactory(cellData -> cellData.getValue().getRetur());
 
 		table_fly.setItems(oblist);
 		
@@ -402,11 +408,15 @@ public class SceneController {
 			Time tid = new Time(Integer.parseInt(HH.getText()),Integer.parseInt(MM.getText()),0);
 			Date DatePickerDate2 = new Date(0);
 			Time tid2 = new Time(0);
+			float pris = Float.parseFloat(airportlist.get(0).getTur().get());
 			if (retur) {
 				DatePickerDate2 = Date.valueOf(dateSelection2.getValue());
 				tid2 = new Time(Integer.parseInt(HH2.getText()), Integer.parseInt(MM2.getText()),0);
+				pris = pris + Float.parseFloat(airportlist.get(0).getRetur().get());
 			}
-			Main.selectPlane(Integer.parseInt(flylist.get(0).getId().get()), airportlist.get(0).getAbbreviation().get(), DatePickerDate, DatePickerDate2, tid, tid2);
+			Main.selectPlane(Integer.parseInt(flylist.get(0).getId().get()),
+					airportlist.get(0).getAbbreviation().get(),
+					DatePickerDate, DatePickerDate2, tid, tid2, pris);
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -491,7 +501,7 @@ public class SceneController {
 			}
 			//Gabriel
 			while(rs.next()) {
-				oblist3.add(new Airport(rs.getInt("DestinationID"), rs.getString("Destination"), rs.getString("Abbreviation")));
+				oblist3.add(new Airport(rs.getInt("DestinationID"), rs.getString("Destination"), rs.getString("Abbreviation"), rs.getFloat("turPris"), rs.getFloat("returPris")));
 			}
 			//Nilaksan
 		} 	catch (Exception ex) {

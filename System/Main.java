@@ -90,13 +90,14 @@ public class Main extends Application {
 	}
 
 	//Gabriel
-  	public static void selectPlane(int id, String til, Date dato, Date dato2, Time afgang, Time afgang2) {
+  	public static void selectPlane(int id, String til, Date dato, Date dato2, Time afgang, Time afgang2, float pris) {
       		currentPlane = id;
       		currentTil = til;
       		currentDato = dato;
       		currentDato2 = dato2;
       		currentAfgang = afgang;
       		currentAfgang2 = afgang2;
+      		currentBilletPris = pris;
   	}
     
    	//Gabriel

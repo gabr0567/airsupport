@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
-      <TableView fx:id="table_fly" layoutX="44.0" layoutY="114.0" prefHeight="596.0" prefWidth="406.0">
+      <TableView fx:id="table_fly" layoutX="27.0" layoutY="114.0" prefHeight="596.0" prefWidth="406.0">
         <columns>
             <TableColumn fx:id="col_flynr" prefWidth="82.39999008178711" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Flynr" />
             <TableColumn fx:id="col_flynavn" prefWidth="246.3999786376953" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
@@ -33,10 +33,12 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <TableView fx:id="table_destination" layoutX="524.0" layoutY="114.0" prefHeight="596.0" prefWidth="406.0">
+      <TableView fx:id="table_destination" layoutX="436.0" layoutY="114.0" prefHeight="596.0" prefWidth="576.0">
          <columns>
             <TableColumn fx:id="col_destination" prefWidth="323.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Lufthavn" />
             <TableColumn fx:id="col_abbreviation" prefWidth="83.199951171875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Forkortelse" />
+            <TableColumn fx:id="col_tur" prefWidth="83.199951171875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Tur" />
+            <TableColumn fx:id="col_retur" prefWidth="83.199951171875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Retur (oveni)" />
          </columns>
       </TableView>
       <TextField fx:id="HH" layoutX="1016.0" layoutY="323.0" prefHeight="26.0" prefWidth="40.0" promptText="HH" />

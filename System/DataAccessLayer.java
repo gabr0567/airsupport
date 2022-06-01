@@ -188,7 +188,7 @@ public class DataAccessLayer {
 			currentCVR + ", 0, " + currentBilletPris + ")");
 	  		return (id != 0);
 		}
-		
+
 		//Gabriel
 		public ResultSet getRS7() {
 			ResultSet rs;

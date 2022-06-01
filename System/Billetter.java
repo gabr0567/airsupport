@@ -30,7 +30,9 @@ public class Billetter {
 		this.Til = Til;
 		this.Fly = Fly;
 		this.Dato = Dato;
+		this.Dato2 = Dato2;
 		this.afgang = afgang;
+		this.afgang2 = afgang2;
 		this.tlf = tlf;
 		this.email = email;
 		this.CVR = CVR;
@@ -63,8 +65,18 @@ public class Billetter {
 		return var;
 	}
 	
+	public StringProperty getDato2() {
+		StringProperty var = new SimpleStringProperty(""+Dato2);
+		return var;
+	}
+	
 	public StringProperty getTid() {
 		StringProperty var = new SimpleStringProperty(""+afgang);
+		return var;
+	}
+	
+	public StringProperty getTid2() {
+		StringProperty var = new SimpleStringProperty(""+afgang2);
 		return var;
 	}
 	
