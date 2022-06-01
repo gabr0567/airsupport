@@ -15,10 +15,16 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import javafx.collections.ObservableList;
 
 public class PDFCreate {
-	private static DataAccessLayer db;
 	@SuppressWarnings("deprecation")
-	public static void sendPDF(List listProd, List<Billetter> listBillet) throws IOException, SQLException {
+	public static void sendPDF(List<Rprodukter> listProd, List<Billetter> listBillet) throws IOException, SQLException {
 		int height = 370;
+		int height2 = 0;
+		int fontSize = 14;
+		for (int i = 0; i < listProd.size()+1; i++) {
+			height2 = height2 + 20;
+		}
+		
+		height = height + height2;
 		PDDocument pdfdoc= new PDDocument(); 
 		PDRectangle pageSize = new PDRectangle(615, height);
 		PDPage page = new PDPage(pageSize);
@@ -79,11 +85,29 @@ public class PDFCreate {
 		content.moveTextPositionByAmount(0,-20);
 		content.drawString("STK                                               VAREBESKRIVELSE                                                 PRIS");
 		
-		//TODO Varer her
+		//Tillægsprodukter
+		boolean ran = false;
+		for (int i = 1; i < listProd.size()+1; i++) {
+			int x = 0;
+			String stk = listProd.get(i-1).getAntal().get();
+			String VB = listProd.get(i-1).getNavn().get();
+			String pris = listProd.get(i-1).getPris().get();
+			if (ran == true) x = - 535;
+			content.setFont(font2, fontSize);
+			content.moveTextPositionByAmount(x+0, -20);
+			content.drawString(stk);
+			content.setFont(font2, fontSize);
+			content.moveTextPositionByAmount(210, 0);
+			content.drawString(VB);
+			content.setFont(font2, fontSize);
+			content.moveTextPositionByAmount(325, 0);
+			content.drawString(pris);
+			ran = true;
+		}
 		
 		//Afsnit
 		content.setFont(font, 14);
-		content.moveTextPositionByAmount(0,-20);
+		content.moveTextPositionByAmount(-535,-20);
 		content.drawString("_________________________________________________________________________");
 		//At betale
 		content.setFont(font2, 14);
