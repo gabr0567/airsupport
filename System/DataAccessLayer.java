@@ -1,7 +1,6 @@
 package application;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Random;
 
 public class DataAccessLayer {
@@ -172,83 +171,189 @@ public class DataAccessLayer {
 		//Gabriel
 		public boolean executeInsertBillet(int billetID, 
 				String currentNavn, String currentTil, int currentPlane, 
-				Date currentDato, Date currentDato2, Time currentAfgang, Time currentAfgang2, int currentTlf, 
-				String currentEmail, int currentCVR, float currentBilletPris) {
-	  		int id = executeInsert("INSERT INTO Billet VALUES (" +
-	  		billetID + ", '" +
-			currentNavn + "', '" +
-			currentTil + "', " +
-			currentPlane + ", '" +
-			currentDato + "', '" +
-			currentDato2 + "', '" +
-			currentAfgang + "', '" +
-			currentAfgang2 + "', '" +
-			currentTlf + "', '" +
-			currentEmail + "', " + 
-			currentCVR + ", 0, " + currentBilletPris + ")");
-	  		return (id != 0);
+				Date currentDato, Date currentDato2, Time currentAfgang, Time currentAfgang2, String currentTlf, 
+				String currentEmail, int currentCVR, float currentBilletPris)  {
+			String insert = "INSERT INTO Billet(BilletID, Navn, Til, Fly, Dato, Dato2, afgang, Afgang2, tlf, Email, CVR, Endt, billetPris) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(insert);
+				
+				ps.setInt(1, billetID);
+				ps.setString(2, currentNavn);
+				ps.setString(3, currentTil);
+				ps.setInt(4, currentPlane);
+				ps.setDate(5, currentDato);
+				ps.setDate(6, currentDato2);
+				ps.setTime(7, currentAfgang);
+				ps.setTime(8, currentAfgang2);
+				ps.setString(9, currentTlf);
+				ps.setString(10, currentEmail);
+				ps.setInt(11, currentCVR);
+				ps.setInt(12, 0);
+				ps.setFloat(13, currentBilletPris);
+					
+				ps.executeQuery();
+				
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 
 		//Gabriel
-		public ResultSet getRS7() {
+		public ResultSet getRS7() throws SQLException {
 			ResultSet rs;
-			try {
-				rs = connection.createStatement().executeQuery("SELECT * FROM Destination");
-				return rs;
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return null;
-			} 
+			
+			rs = connection.createStatement().executeQuery("SELECT * FROM Destination");
+			return rs;
+
 		}
 		
 		//Gabriel
 		public boolean executeInsertNuvProdukter(int ID, String Navn, int prod, int billetID, float pris, int antal) {
-	  		int id = executeInsert("INSERT INTO NuværendeTillægsprodukter VALUES (" +
-	  		ID + ", '" +
-			Navn + "', " +
-			prod + ", " +
-			billetID + ", " +
-			pris + ", " +
-			antal + ")");
-	  		return (id != 0);
+			String insert = "INSERT INTO NuværendeTillægsprodukter(NTID, Navn, tillægsprodukt, BilletID, Pris, Antal) VALUES (?,?,?,?,?,?)";
+			
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(insert);
+				
+				ps.setInt(1, ID);
+				ps.setString(2, Navn);
+				ps.setInt(3, prod);
+				ps.setInt(4, billetID);
+				ps.setFloat(5, pris);
+				ps.setInt(6, antal);
+					
+				ps.executeQuery();
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 		
 		//Gabriel
 		public boolean executePlaneFalse(int currentPlane, String currentTil) {
-			boolean id = executeUpdate("UPDATE Fly SET Status = 0, Placering = '" + currentTil + "' WHERE FlyID = " + currentPlane);
-			return (id);
+			String update = "UPDATE Fly SET Status = 0, Placering = ? WHERE FlyID = ?";
+			
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(update);
+				
+				ps.setString(1, currentTil);
+				ps.setInt(2, currentPlane);
+					
+				ps.executeQuery();
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 		
 		//Gabriel
 		public boolean disableProd(int ID) {
-			boolean id = executeUpdate("UPDATE Tillægsprodukter SET Aktiv = 0 WHERE TillægsproduktID = " + ID);
-			return (id);
+			String update = "UPDATE Tillægsprodukter SET Aktiv = 0 WHERE TillægsproduktID = ?";
+			
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(update);
+				
+				ps.setInt(1, ID);
+				
+				ps.executeQuery();
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 		
 		//Gabriel
 		public boolean updatePrice(int ID, float price) {
-			boolean id = executeUpdate("UPDATE Tillægsprodukter SET Pris = " + price +" WHERE TillægsproduktID = " + ID);
-			return (id);
+			String update = "UPDATE Tillægsprodukter SET Pris = ? WHERE TillægsproduktID = ?";
+			
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(update);
+				
+				ps.setFloat(1, price);
+				ps.setInt(2, ID);
+				
+				ps.executeQuery();
+				
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 		//Gabriel
 		public boolean newProduct(int ID, String name, float price) {
-			int id = executeInsert("INSERT INTO Tillægsprodukter VALUES (" + ID + ", " + price + ", '" + name + "', 1, 1)");
-			return (id != 0);
+			String insert = "INSERT INTO Tillægsprodukter(TillægsproduktID, Pris, Navn, Aktiv) VALUES (?,?,?,1)";
+			
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(insert);
+				
+				ps.setInt(1, ID);
+				ps.setFloat(2, price);
+				ps.setString(3, name);
+				
+				ps.executeQuery();
+				
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 		//Gabriel
 		public boolean tilkald(int ID) {
-			boolean id = executeUpdate("UPDATE Fly SET Placering = 'BLL', Status = 1 WHERE FlyID = " + ID);
-			return (id);
+			String update = "UPDATE Fly SET Placering = 'BLL', Status = 1 WHERE FlyID = ?";
+			
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(update);
+				
+				ps.setInt(1, ID);
+				
+				ps.executeQuery();
+				
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 		//Gabriel
 		public boolean send(int flyID, String airport) {
-			boolean id = executeUpdate("UPDATE Fly SET Placering = '" + airport + "', Status = 0 WHERE FlyID = " + flyID);
-			return (id);
+			String update = "UPDATE Fly SET Placering = ?, Status = 0 WHERE FlyID = ?";
+			
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(update);
+				
+				ps.setString(1, airport);
+				ps.setInt(2, flyID);
+				
+				ps.executeQuery();
+			
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 
 		public boolean endtBillet(int currentBilletID) {
-			boolean id = executeUpdate("UPDATE Billet SET Endt = 1 WHERE BilletID = " + currentBilletID);
-			return (id);
+			String update = "UPDATE Billet SET Endt = 1 WHERE BilletID = ?";
+			
+			PreparedStatement ps;
+			try {
+				ps = connection.prepareStatement(update);
+				
+				ps.setInt(1, currentBilletID);
+				
+				ps.executeQuery();
+				
+				return true;
+			} catch (SQLException e) {
+				return false;
+			}
 		}
 
 		public ResultSet getRS9(int ID) {

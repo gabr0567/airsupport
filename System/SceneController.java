@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 
 import javafx.scene.Node;
@@ -379,8 +380,7 @@ public class SceneController {
 					oblist.add(new Produkter(rs3.getInt("TillægsproduktID"),
 						rs3.getInt("Pris"),
 						rs3.getString("Navn"),
-						rs3.getBoolean("Aktiv"),
-						rs3.getBoolean("UnderFlyvning")));
+						rs3.getBoolean("Aktiv")));
 				}
 			}
 		} catch (Exception ex) {
@@ -446,8 +446,7 @@ public class SceneController {
 				oblist.add(new Produkter(rs4.getInt("TillægsproduktID"),
 					rs4.getFloat("Pris"),
 					rs4.getString("Navn"),
-					rs4.getBoolean("Aktiv"),
-					rs4.getBoolean("UnderFlyvning")));
+					rs4.getBoolean("Aktiv")));
 			}
 		
 		} catch (Exception ex) {
@@ -501,7 +500,7 @@ public class SceneController {
 			}
 			//Gabriel
 			while(rs.next()) {
-				oblist3.add(new Airport(rs.getInt("DestinationID"), rs.getString("Destination"), rs.getString("Abbreviation"), rs.getFloat("turPris"), rs.getFloat("returPris")));
+				oblist3.add(new Airport(rs.getInt("DestinationID"), rs.getString("Destination"), rs.getString("Abbreviation"), rs.getFloat("Tur"), rs.getFloat("Retur")));
 			}
 			//Nilaksan
 		} 	catch (Exception ex) {
@@ -560,7 +559,7 @@ public class SceneController {
 	}
 	
 	//Gabriel
-	public void createBillet(ActionEvent event) throws IOException {
+	public void createBillet(ActionEvent event) throws IOException, SQLException {
 		Main.insertBillet(oblistprod);
 		//skift til menu
 		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
@@ -571,7 +570,7 @@ public class SceneController {
 	}
 	
 	//Gabriel
-	public void disableProd(ActionEvent event) {
+	public void disableProd(ActionEvent event) throws NumberFormatException, SQLException {
 		ObservableList<Produkter> produktList;
 		produktList = table_TPTV.getSelectionModel().getSelectedItems();
 		Main.disableProd(Integer.parseInt(produktList.get(0).getID().get()));
@@ -580,7 +579,7 @@ public class SceneController {
 	}
 	
 	//Gabriel
-	public void updatePrice(ActionEvent event) {
+	public void updatePrice(ActionEvent event) throws NumberFormatException, SQLException {
 		ObservableList<Produkter> produktList;
 		produktList = table_TPTV.getSelectionModel().getSelectedItems();
 		Main.updatePrice(Integer.parseInt(produktList.get(0).getID().get()), Float.parseFloat(newPrice.getText()));
@@ -589,14 +588,14 @@ public class SceneController {
 	}
 	
 	//Gabriel
-	public void newProduct(ActionEvent event) {
+	public void newProduct(ActionEvent event) throws NumberFormatException, SQLException {
 		Main.newProduct(addName.getText(), Float.parseFloat(addPrice.getText()));
 		
 		loadTP(event);
 	}
 	
 	//Gabriel
-	public void tilkald(ActionEvent event) {
+	public void tilkald(ActionEvent event) throws NumberFormatException, SQLException {
 		ObservableList<Fly> flyList;
 		flyList = table_tilkald.getSelectionModel().getSelectedItems();
 		Main.tilkald(Integer.parseInt(flyList.get(0).getId().get()));
@@ -605,7 +604,7 @@ public class SceneController {
 	}
 	
 	//Gabriel
-	public void send(ActionEvent event) {
+	public void send(ActionEvent event) throws NumberFormatException, SQLException {
 		ObservableList<Fly> flyList;
 		ObservableList<Airport> airportList;
 		flyList = table_send.getSelectionModel().getSelectedItems();
@@ -618,7 +617,7 @@ public class SceneController {
 	}
 	
 	//Gabriel
-	public void sendBillet(ActionEvent event) throws IOException {
+	public void sendBillet(ActionEvent event) throws IOException, NumberFormatException, SQLException {
 		Main.updateBillet(oblistprod);
 		Main.sendPDF();
 		//skift til menu
