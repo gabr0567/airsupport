@@ -84,7 +84,7 @@ INSERT INTO [Airsupport].[dbo].[Billet] (BilletID, Navn, Til, Fly, Dato, afgang,
 VALUES (412,'Bo Hansen', 'CPH', 3, '2022-5-20','18:00:00', '89304820','ofbton@gmail.com',0,0,'21:55:00','2022-5-27',359,9)
 
 INSERT INTO [Airsupport].[dbo].[Destination] (DestinationID, Destination, Abbreviation, Tur, Retur)
-VALUES (1, 'London Stansted Airport', 'STN', 249.95, 109.95)
+VALUES (1, 'London Stansted Airport', 'STN', 249.95, 349.95)
 
 
 

@@ -1,12 +1,21 @@
 package application;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import javafx.application.Application;
 import javafx.beans.property.StringProperty;
@@ -25,8 +34,11 @@ public class Main extends Application {
 	private static int currentCVR;
 	private static String currentTil;
 	private static Date currentDato;
+	private static Date currentDato2;
 	private static Time currentAfgang;
+	private static Time currentAfgang2;
 	private static int currentBilletID;
+	private static float currentBilletPris;
 	
 	@Override
 	//Indlæs den første scene - Gabriel
@@ -78,11 +90,14 @@ public class Main extends Application {
 	}
 
 	//Gabriel
-  	public static void selectPlane(int id, String til, Date dato, Time afgang) {
+  	public static void selectPlane(int id, String til, Date dato, Date dato2, Time afgang, Time afgang2, float pris) {
       		currentPlane = id;
       		currentTil = til;
       		currentDato = dato;
+      		currentDato2 = dato2;
       		currentAfgang = afgang;
+      		currentAfgang2 = afgang2;
+      		currentBilletPris = pris;
   	}
     
    	//Gabriel
@@ -110,8 +125,8 @@ public class Main extends Application {
 		
 		db.executeInsertBillet(currentBilletID, 
 				currentNavn, currentTil, currentPlane, 
-				currentDato, currentAfgang, currentTlf, 
-				currentEmail, currentCVR);
+				currentDato, currentDato2, currentAfgang, currentAfgang2, currentTlf, 
+				currentEmail, currentCVR, currentBilletPris);
 		
 		for (int i = 0; i < oblistprod.size(); i++) {
 			db.executeInsertNuvProdukter(rand.nextInt(999999999),
@@ -166,7 +181,7 @@ public class Main extends Application {
 	public static void createCSV() {
 		try {
 			String home = System.getProperty("user.home");
-			PrintWriter pw = new PrintWriter(new File(home + "\\Downloads\\tabel2.csv"));
+			PrintWriter pw = new PrintWriter(new File(home + "\\Downloads\\TProdukter.csv"));
 			StringBuilder sb = new StringBuilder();
 			ResultSet rs = db.getRS8();
 			
@@ -187,6 +202,44 @@ public class Main extends Application {
 			pw.close();
 			
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void sendPDF() throws IOException {
+		try {
+			ResultSet rs = db.getRS9(currentBilletID);
+			ResultSet rs2 = db.getRS10(currentBilletID);
+			List<Rprodukter> listProd = new LinkedList<Rprodukter>();
+			List<Billetter> listBillet = new LinkedList<Billetter>(); 
+			
+			while(rs2.next()) {
+				listBillet.add(new Billetter(rs2.getInt("BilletID"),
+				rs2.getString("Navn"),
+				rs2.getString("Til"),
+				rs2.getInt("Fly"),
+				rs2.getDate("Dato"),
+				rs2.getDate("Dato2"),
+				rs2.getTime("afgang"),
+				rs2.getTime("afgang2"),
+				rs2.getString("tlf"),
+				rs2.getString("Email"),
+				rs2.getInt("CVR"),
+				rs2.getBoolean("Endt"),
+				rs2.getFloat("billetPris")));
+			}
+			
+			while(rs.next()) {
+				listProd.add(new Rprodukter (rs.getInt("NTID"),
+						rs.getString("Navn"),
+						rs.getInt("till�gsprodukt"),
+						rs.getInt("BilletID"),
+						rs.getFloat("Pris"),
+						rs.getInt("Antal")));
+			}
+			
+			PDFCreate.sendPDF(listProd, listBillet);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

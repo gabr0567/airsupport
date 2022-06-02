@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 
 public class SceneController {
 	ObservableList<Rprodukter> oblistprod = FXCollections.observableArrayList();
+	private boolean retur = false;
 	
 	//Tabel fly
 	@FXML
@@ -122,6 +123,14 @@ public class SceneController {
 	@FXML
 	private TextField MM;
 	
+	//Dato og tid2
+	@FXML
+	private DatePicker dateSelection2;
+	@FXML
+	private TextField HH2;
+	@FXML
+	private TextField MM2;
+	
 	//Tabel destination
 	@FXML
 	private TableView <Airport> table_destination;
@@ -129,6 +138,10 @@ public class SceneController {
 	private TableColumn <Airport, String> col_destination;
 	@FXML
 	private TableColumn <Airport, String> col_abbreviation;
+	@FXML
+	private TableColumn <Airport, String> col_tur;
+	@FXML
+	private TableColumn <Airport, String> col_retur;
 	
 	//moms
 	@FXML
@@ -204,7 +217,7 @@ public class SceneController {
 		} else {
 			Alert errorAlert = new Alert(AlertType.ERROR);
 			errorAlert.setHeaderText("Nogle ting mangler at blive udfyldt");
-			errorAlert.setContentText("Tjek at navn, tlf og email er udfyldt!");
+			errorAlert.setContentText("Tjek at navn, tlf og email er udfyldt! (husk at skrive 0 ved CVR, hvis der ikke er CVR)");
 			errorAlert.showAndWait();
 		}
 	}
@@ -300,7 +313,7 @@ public class SceneController {
 			}
 			
 			while(rs2.next()) {
-				oblist2.add(new Airport(rs2.getInt("DestinationID"),rs2.getString("Destination"),rs2.getString("Abbreviation")));
+				oblist2.add(new Airport(rs2.getInt("DestinationID"),rs2.getString("Destination"),rs2.getString("Abbreviation"),rs2.getFloat("Tur"),rs2.getFloat("Retur")));
 			}
 		
 		} catch (Exception ex) {
@@ -313,6 +326,8 @@ public class SceneController {
 		
 		col_destination.setCellValueFactory(cellData -> cellData.getValue().getDestination());
 		col_abbreviation.setCellValueFactory(cellData -> cellData.getValue().getAbbreviation());
+		col_tur.setCellValueFactory(cellData -> cellData.getValue().getTur());
+		col_retur.setCellValueFactory(cellData -> cellData.getValue().getRetur());
 
 		table_fly.setItems(oblist);
 		
@@ -327,16 +342,19 @@ public class SceneController {
 			ResultSet rs2 = Main.getRS2();
 			while(rs2.next()) {
 				if (rs2.getBoolean("Endt") == false) {
-					oblist.add(new Billetter(rs2.getInt("BilletID"), 
-							rs2.getString("Navn"), 
-							rs2.getString("Til"), 
-							rs2.getInt("Fly"), 
-							rs2.getDate("Dato"), 
-							rs2.getTime("afgang"), 
-							rs2.getString("tlf"), 
-							rs2.getString("email"),
+					oblist.add(new Billetter(rs2.getInt("BilletID"),
+							rs2.getString("Navn"),
+							rs2.getString("Til"),
+							rs2.getInt("Fly"),
+							rs2.getDate("Dato"),
+							rs2.getDate("Dato2"),
+							rs2.getTime("afgang"),
+							rs2.getTime("afgang2"),
+							rs2.getString("tlf"),
+							rs2.getString("Email"),
 							rs2.getInt("CVR"),
-							rs2.getBoolean("Endt")));
+							rs2.getBoolean("Endt"),
+							rs2.getFloat("billetPris")));
 				}
 			}
 		} catch (Exception ex) {
@@ -377,6 +395,7 @@ public class SceneController {
 	}
 	
 	//Gabriel
+	@SuppressWarnings("deprecation")
 	public boolean selectFly() {
 		ObservableList <Fly> flylist;
 		ObservableList <Airport> airportlist;
@@ -386,9 +405,18 @@ public class SceneController {
 		
 		try {
 			Date DatePickerDate = Date.valueOf(dateSelection.getValue());
-			@SuppressWarnings("deprecation")
 			Time tid = new Time(Integer.parseInt(HH.getText()),Integer.parseInt(MM.getText()),0);
-			Main.selectPlane(Integer.parseInt(flylist.get(0).getId().get()), airportlist.get(0).getAbbreviation().get(), DatePickerDate, tid);
+			Date DatePickerDate2 = new Date(0);
+			Time tid2 = new Time(0);
+			float pris = Float.parseFloat(airportlist.get(0).getTur().get());
+			if (retur) {
+				DatePickerDate2 = Date.valueOf(dateSelection2.getValue());
+				tid2 = new Time(Integer.parseInt(HH2.getText()), Integer.parseInt(MM2.getText()),0);
+				pris = pris + Float.parseFloat(airportlist.get(0).getRetur().get());
+			}
+			Main.selectPlane(Integer.parseInt(flylist.get(0).getId().get()),
+					airportlist.get(0).getAbbreviation().get(),
+					DatePickerDate, DatePickerDate2, tid, tid2, pris);
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -398,7 +426,7 @@ public class SceneController {
 	
 	//Gabriel
 	public boolean selectKunde() {
-		if (inputNavn.getText() == "" || inputTlf.getText() == "" || inputEmail.getText() == "") {
+		if (inputNavn.getText() == "" || inputTlf.getText() == "" || inputEmail.getText() == "" || inputCVR.getText() == "") {
 			return false;
 		} else {
 			Main.selectCustomer(inputNavn.getText(),inputTlf.getText(),inputEmail.getText(), Integer.parseInt(inputCVR.getText()));
@@ -431,8 +459,10 @@ public class SceneController {
 
 
 		table_produkter.setItems(oblist);
-		
-		//Gabriel
+	}
+	
+	public void loadProdukt2(ActionEvent event) {
+		loadProdukt(event);
 		fly_nr.setText(String.valueOf(Main.currentPlane()));
 		kunde_navn.setText(String.valueOf(Main.currentNavn()));
 	}
@@ -471,7 +501,7 @@ public class SceneController {
 			}
 			//Gabriel
 			while(rs.next()) {
-				oblist3.add(new Airport(rs.getInt("DestinationID"), rs.getString("Destination"), rs.getString("Abbreviation")));
+				oblist3.add(new Airport(rs.getInt("DestinationID"), rs.getString("Destination"), rs.getString("Abbreviation"), rs.getFloat("turPris"), rs.getFloat("returPris")));
 			}
 			//Nilaksan
 		} 	catch (Exception ex) {
@@ -590,16 +620,32 @@ public class SceneController {
 	//Gabriel
 	public void sendBillet(ActionEvent event) throws IOException {
 		Main.updateBillet(oblistprod);
+		Main.sendPDF();
 		//skift til menu
 		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
-		stage.show();	
+		stage.show();
 	}
 	
 	//Gabriel
 	public void CSV(ActionEvent event) {
 		Main.createCSV();
+	}
+	
+	//Gabriel
+	public void enableRetur(ActionEvent event) {
+		if (retur) {
+			dateSelection2.setDisable(true);
+			HH2.setDisable(true);
+			MM2.setDisable(true);
+			retur = false;
+		} else {
+			dateSelection2.setDisable(false);
+			HH2.setDisable(false);
+			MM2.setDisable(false);
+			retur = true;
+		}
 	}
 }

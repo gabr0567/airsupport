@@ -172,21 +172,23 @@ public class DataAccessLayer {
 		//Gabriel
 		public boolean executeInsertBillet(int billetID, 
 				String currentNavn, String currentTil, int currentPlane, 
-				Date currentDato, Time currentAfgang, int currentTlf, 
-				String currentEmail, int currentCVR) {
+				Date currentDato, Date currentDato2, Time currentAfgang, Time currentAfgang2, int currentTlf, 
+				String currentEmail, int currentCVR, float currentBilletPris) {
 	  		int id = executeInsert("INSERT INTO Billet VALUES (" +
 	  		billetID + ", '" +
 			currentNavn + "', '" +
 			currentTil + "', " +
 			currentPlane + ", '" +
 			currentDato + "', '" +
+			currentDato2 + "', '" +
 			currentAfgang + "', '" +
+			currentAfgang2 + "', '" +
 			currentTlf + "', '" +
 			currentEmail + "', " + 
-			currentCVR + ", 0)");
+			currentCVR + ", 0, " + currentBilletPris + ")");
 	  		return (id != 0);
 		}
-		
+
 		//Gabriel
 		public ResultSet getRS7() {
 			ResultSet rs;
@@ -247,5 +249,27 @@ public class DataAccessLayer {
 		public boolean endtBillet(int currentBilletID) {
 			boolean id = executeUpdate("UPDATE Billet SET Endt = 1 WHERE BilletID = " + currentBilletID);
 			return (id);
+		}
+
+		public ResultSet getRS9(int ID) {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM NuværendeTillægsprodukter WHERE BilletID = " + ID);
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
+		}
+
+		public ResultSet getRS10(int ID) {
+			ResultSet rs;
+			try {
+				rs = connection.createStatement().executeQuery("SELECT * FROM Billet WHERE BilletID = " + ID);
+				return rs;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			} 
 		}
 }
