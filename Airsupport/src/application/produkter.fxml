@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+   <children>
+      <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="82.0" prefWidth="213.0" style="-fx-border-color: #58b2dc; -fx-border-radius: 2; -fx-border-width: 2;">
+         <children>
+            <Text layoutX="16.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Text layoutX="16.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly nr:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Text fx:id="fly_nr" layoutX="59.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="146.21484375" />
+            <Text fx:id="kunde_navn" layoutX="61.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="109.60000000000014" />
+         </children></Pane>
+      <TableView fx:id="table_produkter" layoutX="198.0" layoutY="142.0" prefHeight="422.0" prefWidth="317.0">
+        <columns>
+          <TableColumn fx:id="col_produkt" prefWidth="224.26669311523438" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Produkter" />
+          <TableColumn fx:id="col_produktpris" prefWidth="92.53335571289062" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
+        </columns>
+      </TableView>
+      <Button layoutX="1171.0" layoutY="680.0" mnemonicParsing="false" onAction="#createBillet" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Opret billet" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+      <Button layoutX="14.0" layoutY="691.0" mnemonicParsing="false" onAction="#SwitchToFly1" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+      <Pane layoutX="50.0" layoutY="184.0" prefHeight="229.0" prefWidth="249.0" style="-fx-border-color: #58b2dc; -fx-border-radius: 2; -fx-border-width: 1.5;" visible="false">
+         <children>
+            <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Mad" textFill="#58b2dc">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></MenuButton>
+            <Button layoutX="168.0" layoutY="13.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="66.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 2;" text="Tilføj" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+         </children>
+      </Pane>
+      <Button layoutX="1184.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadProdukt2" prefHeight="51.0" prefWidth="151.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se produkter" textFill="#58b2dc">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Button>
+      <Pane layoutX="1090.0" layoutY="464.0" prefHeight="144.0" prefWidth="248.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;">
+         <children>
+            <Text layoutX="15.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ex moms:" wrappingWidth="109.60000000000014">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Text>
+            <Text layoutX="14.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moms:" wrappingWidth="76.63592529296875">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Text>
+            <Text layoutX="14.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inkl moms:" wrappingWidth="96.7391357421875">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Text>
+            <Text fx:id="inklMoms" layoutX="117.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="120.486328125">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+            <Text fx:id="moms" layoutX="117.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="120.486328125">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+            <Text fx:id="exMoms" layoutX="117.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="120.486328125">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+         </children>
+      </Pane>
+      <TableView fx:id="table_produkter2" layoutX="614.0" layoutY="138.0" prefHeight="430.0" prefWidth="430.0">
+         <columns>
+            <TableColumn fx:id="col_produkt2" prefWidth="224.26669311523438" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Produkter" />
+            <TableColumn fx:id="col_produktpris2" prefWidth="128.00006103515625" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pris" />
+            <TableColumn fx:id="col_produktantal" prefWidth="77.60003662109375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Antal" />
+         </columns>
+      </TableView>
+      <Text layoutX="260.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkter at vælge imellem">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Text>
+      <Text layoutX="761.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valgte produkter">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Text>
+      <TextField fx:id="inputAntal" layoutX="198.0" layoutY="608.0" />
+      <Text layoutX="201.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Button layoutX="357.0" layoutY="608.0" mnemonicParsing="false" onAction="#insertValgt" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Tilføj" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

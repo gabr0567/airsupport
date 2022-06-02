@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="58.0" prefWidth="152.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Tilbage" textFill="#58b2dc">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Text layoutX="151.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ny pris:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Text>
+      <Button layoutX="1157.0" layoutY="695.0" mnemonicParsing="false" onAction="#newProduct" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilføj" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <TextField fx:id="addPrice" layoutX="1023.0" layoutY="600.0" prefHeight="34.0" prefWidth="159.0" />
+      <Text layoutX="931.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pris:" wrappingWidth="80.39999999999992">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="918.0" layoutY="565.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="1029.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tilføj vare">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="addName" layoutX="1021.0" layoutY="539.0" prefHeight="34.0" prefWidth="159.0" />
+      <TextField fx:id="newPrice" layoutX="286.0" layoutY="512.0" prefHeight="38.0" prefWidth="202.0" />
+      <Button layoutX="304.0" layoutY="588.0" mnemonicParsing="false" onAction="#updatePrice" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Ændre" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Text layoutX="319.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ændre pris">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <TextField layoutX="674.0" layoutY="359.0" prefHeight="418.0" prefWidth="6.0" style="-fx-background-color: #58b2dc;">
+         <font>
+            <Font size="1.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="-2.0" layoutY="359.0" prefHeight="6.0" prefWidth="1374.0" style="-fx-background-color: #58b2dc;">
+         <font>
+            <Font size="1.0" />
+         </font>
+      </TextField>
+      <TableView fx:id="table_TPTV" layoutX="314.0" layoutY="65.0" prefHeight="270.0" prefWidth="723.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5;">
+        <columns>
+          <TableColumn fx:id="col_TP" prefWidth="545.6000061035156" style="fx-border-color: #58b2dc; -fx-background-color: #58b2dc;" text="Tillægsprodukter" />
+            <TableColumn fx:id="col_pris" prefWidth="174.4000122070313" style="fx-border-color: #58b2dc; -fx-background-color: #58b2dc;" text="Pris" />
+        </columns>
+      </TableView>
+      <Button layoutX="1172.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadTP" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Indlæs" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="1202.0" layoutY="274.0" mnemonicParsing="false" onAction="#disableProd" prefHeight="51.0" prefWidth="128.0" style="-fx-background-color: #ff1919; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Slet produkt">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

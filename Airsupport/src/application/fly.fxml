@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+   <children>
+      <TableView fx:id="table_fly" layoutX="21.0" layoutY="114.0" prefHeight="596.0" prefWidth="406.0">
+        <columns>
+            <TableColumn fx:id="col_flynr" prefWidth="82.39999008178711" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Flynr" />
+            <TableColumn fx:id="col_flynavn" prefWidth="246.3999786376953" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
+            <TableColumn fx:id="col_flypladser" prefWidth="77.5999755859375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Pladser" />
+        </columns>
+      </TableView>
+      <Button layoutX="27.0" layoutY="22.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="51.0" prefWidth="157.0" style="-fx-border-color: #58b2dc; -fx-background-color: #ffffff; -fx-border-radius: 4; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
+      <Button layoutX="1165.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadFly" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Indlæs" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="1179.0" layoutY="684.0" mnemonicParsing="false" onAction="#switchToNyBillet" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Næste" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <TableView fx:id="table_destination" layoutX="436.0" layoutY="114.0" prefHeight="596.0" prefWidth="576.0">
+         <columns>
+            <TableColumn fx:id="col_destination" prefWidth="323.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Lufthavn" />
+            <TableColumn fx:id="col_abbreviation" prefWidth="83.199951171875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Forkortelse" />
+            <TableColumn fx:id="col_tur" prefWidth="83.199951171875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Tur" />
+            <TableColumn fx:id="col_retur" prefWidth="83.199951171875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Retur (oveni)" />
+         </columns>
+      </TableView>
+      <TextField fx:id="HH" layoutX="1109.0" layoutY="326.0" prefHeight="26.0" prefWidth="40.0" promptText="HH" />
+      <Text layoutX="1109.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vælg dato:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <DatePicker fx:id="dateSelection" layoutX="1108.0" layoutY="268.0" />
+      <Text layoutX="1154.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
+      <TextField fx:id="MM" layoutX="1163.0" layoutY="326.0" prefHeight="26.0" prefWidth="40.0" promptText="MM" />
+      <Text layoutX="1110.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vælg afgang:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <TextField fx:id="HH2" disable="true" layoutX="1109.0" layoutY="595.0" prefHeight="26.0" prefWidth="40.0" promptText="HH" />
+      <Text layoutX="1111.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vælg dato:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <DatePicker fx:id="dateSelection2" disable="true" layoutX="1109.0" layoutY="532.0" />
+      <Text layoutX="1154.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
+      <TextField fx:id="MM2" disable="true" layoutX="1162.0" layoutY="596.0" prefHeight="26.0" prefWidth="40.0" promptText="MM" />
+      <Text layoutX="1114.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vælg afgang:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text layoutX="1169.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tur">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="1157.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Retur">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <CheckBox layoutX="1110.0" layoutY="403.0" mnemonicParsing="false" onAction="#enableRetur" text="Tur/Retur">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></CheckBox>
+   </children>
+</AnchorPane>
