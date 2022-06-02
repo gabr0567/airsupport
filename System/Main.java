@@ -29,7 +29,7 @@ public class Main extends Application {
 	private static DataAccessLayer db;
 	private static int currentPlane;
 	private static String currentNavn;
-	private static int currentTlf;
+	private static String currentTlf;
 	private static String currentEmail;
 	private static int currentCVR;
 	private static String currentTil;
@@ -85,7 +85,7 @@ public class Main extends Application {
 	}
 	
 	//Gabriel
-	public static ResultSet getRS7() {
+	public static ResultSet getRS7() throws SQLException {
 		return db.getRS7();
 	}
 
@@ -113,13 +113,13 @@ public class Main extends Application {
 	//Gabriel
 	public static void selectCustomer(String navn, String tlf, String email, int CVR) {
 		currentNavn = navn;
-		currentTlf = Integer.parseInt(tlf);
+		currentTlf = tlf;
 		currentEmail = email;
 		currentCVR = CVR;
 	}
 	
 	//Gabriel
-	public static void insertBillet(ObservableList<Rprodukter> oblistprod) {
+	public static void insertBillet(ObservableList<Rprodukter> oblistprod) throws SQLException {
 		Random rand = new Random();
 		currentBilletID = rand.nextInt(999999999);
 		
@@ -140,24 +140,24 @@ public class Main extends Application {
 		db.executePlaneFalse(currentPlane, currentTil);
 	}
 	//Gabriel
-	public static void disableProd(int ID) {
+	public static void disableProd(int ID) throws SQLException {
 		db.disableProd(ID);
 	}
 	//Gabriel
-	public static void updatePrice(int ID, float price) {
+	public static void updatePrice(int ID, float price) throws SQLException {
 		db.updatePrice(ID, price);
 	}
 	//Gabriel
-	public static void newProduct(String name, float price) {
+	public static void newProduct(String name, float price) throws SQLException {
 		Random rand = new Random();
 		db.newProduct(rand.nextInt(999999999), name, price);
 	}
 	//Gabriel
-	public static void tilkald(int ID) {
+	public static void tilkald(int ID) throws SQLException {
 		db.tilkald(ID);
 	}
 	//Gabriel
-	public static void send(int flyID, String airport) {
+	public static void send(int flyID, String airport) throws SQLException {
 		db.send(flyID, airport);
 	}
 	//Gabriel
@@ -165,7 +165,7 @@ public class Main extends Application {
 		currentBilletID = ID;
 	}
 	//Gabriel
-	public static void updateBillet(ObservableList<Rprodukter> oblistprod) {
+	public static void updateBillet(ObservableList<Rprodukter> oblistprod) throws NumberFormatException, SQLException {
 		Random rand = new Random();
 		for (int i = 0; i < oblistprod.size(); i++) {
 			db.executeInsertNuvProdukter(rand.nextInt(999999999),
@@ -200,7 +200,7 @@ public class Main extends Application {
 			
 			pw.write(sb.toString());
 			pw.close();
-			
+			System.out.println("CSV eksporteret i overførsler");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -12,10 +12,9 @@ public class Produkter {
 	private float Pris;
 	private String Navn;
 	private boolean Aktiv;
-	private boolean UnderFlyvning;
 	
 	
-	public Produkter(int TillægsproduktID, float Pris, String Navn, boolean Aktiv, boolean UnderFlyvning){
+	public Produkter(int TillægsproduktID, float Pris, String Navn, boolean Aktiv){
 		this.TillægsproduktID = TillægsproduktID;
 		this.Pris = Pris;
 		this.Navn = Navn;
