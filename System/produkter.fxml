@@ -14,10 +14,16 @@
    <children>
       <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="82.0" prefWidth="213.0" style="-fx-border-color: #58b2dc; -fx-border-radius: 2; -fx-border-width: 2;">
          <children>
-            <Text layoutX="16.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:" />
-            <Text layoutX="16.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly nr:" />
-            <Text fx:id="fly_nr" layoutX="49.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="146.21484375" />
-            <Text fx:id="kunde_navn" layoutX="54.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="109.60000000000014" />
+            <Text layoutX="16.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kunde:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Text layoutX="16.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly nr:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Text fx:id="fly_nr" layoutX="59.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="146.21484375" />
+            <Text fx:id="kunde_navn" layoutX="61.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="109.60000000000014" />
          </children></Pane>
       <TableView fx:id="table_produkter" layoutX="198.0" layoutY="142.0" prefHeight="422.0" prefWidth="317.0">
         <columns>
@@ -29,9 +35,9 @@
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
-      <Button layoutX="27.0" layoutY="718.0" mnemonicParsing="false" onAction="#SwitchToFly1" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
+      <Button layoutX="14.0" layoutY="691.0" mnemonicParsing="false" onAction="#SwitchToFly1" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Fortryd" textFill="#58b2dc">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
          </font></Button>
       <Pane layoutX="50.0" layoutY="184.0" prefHeight="229.0" prefWidth="249.0" style="-fx-border-color: #58b2dc; -fx-border-radius: 2; -fx-border-width: 1.5;" visible="false">
          <children>
@@ -45,24 +51,24 @@
                </font></Button>
          </children>
       </Pane>
-      <Button layoutX="1214.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadProdukt2" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se produkter" textFill="#58b2dc">
+      <Button layoutX="1184.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadProdukt2" prefHeight="51.0" prefWidth="151.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se produkter" textFill="#58b2dc">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="19.0" />
          </font>
       </Button>
-      <Pane layoutX="1046.0" layoutY="464.0" prefHeight="144.0" prefWidth="248.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;">
+      <Pane layoutX="1090.0" layoutY="464.0" prefHeight="144.0" prefWidth="248.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-width: 1.5; -fx-border-radius: 3;">
          <children>
             <Text layoutX="15.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ex moms:" wrappingWidth="109.60000000000014">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="19.0" />
                </font></Text>
             <Text layoutX="14.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moms:" wrappingWidth="76.63592529296875">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="19.0" />
                </font></Text>
             <Text layoutX="14.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inkl moms:" wrappingWidth="96.7391357421875">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="18.0" />
                </font></Text>
             <Text fx:id="inklMoms" layoutX="117.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="120.486328125">
                <font>
@@ -85,10 +91,22 @@
             <TableColumn fx:id="col_produktantal" prefWidth="77.60003662109375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Antal" />
          </columns>
       </TableView>
-      <Text layoutX="294.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkter at vælge imellem" />
-      <Text layoutX="725.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valgte produkter" />
+      <Text layoutX="260.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkter at vælge imellem">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Text>
+      <Text layoutX="761.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valgte produkter">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Text>
       <TextField fx:id="inputAntal" layoutX="198.0" layoutY="608.0" />
-      <Text layoutX="201.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal:" />
-      <Button layoutX="357.0" layoutY="608.0" mnemonicParsing="false" onAction="#insertValgt" text="Tilføj" />
+      <Text layoutX="201.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Button layoutX="357.0" layoutY="608.0" mnemonicParsing="false" onAction="#insertValgt" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Tilføj" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

@@ -8,17 +8,23 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
+      <Button layoutX="30.0" layoutY="32.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
          </font></Button>
-      <TableView fx:id="table_billetter" layoutY="61.0" prefHeight="338.0" prefWidth="600.0">
+      <TableView fx:id="table_billetter" layoutX="264.0" layoutY="83.0" prefHeight="545.0" prefWidth="841.0">
         <columns>
-          <TableColumn fx:id="col_navn" prefWidth="185.60003662109375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
-          <TableColumn fx:id="col_billetID" minWidth="0.0" prefWidth="411.99993896484375" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Billet nr." />
+          <TableColumn fx:id="col_navn" prefWidth="283.4666748046875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Navn" />
+          <TableColumn fx:id="col_billetID" minWidth="0.0" prefWidth="557.3333129882812" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Billet nr." />
         </columns>
       </TableView>
-      <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadBilletter" text="Load" />
-      <Button layoutX="631.0" layoutY="399.0" mnemonicParsing="false" onAction="#switchToBilletter2" text="Vælg" />
+      <Button layoutX="1170.0" layoutY="23.0" mnemonicParsing="false" onAction="#loadBilletter" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-bprder-width: 1.5;" text="Load" textFill="#58b2dc">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+      <Button layoutX="1171.0" layoutY="673.0" mnemonicParsing="false" onAction="#switchToBilletter2" prefHeight="51.0" prefWidth="157.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3;" text="Vælg" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
    </children>
 </AnchorPane>
