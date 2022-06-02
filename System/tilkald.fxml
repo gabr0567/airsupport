@@ -9,54 +9,57 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
    <children>
-      <Button layoutX="31.0" layoutY="720.0" mnemonicParsing="false" onAction="#SwitchToTurTilbage" prefHeight="34.0" prefWidth="106.0" text="Button" />
-      <Button layoutX="84.0" layoutY="452.0" mnemonicParsing="false" onAction="#tilkald" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilkald" textFill="#58b2dc">
+      <Button layoutX="49.0" layoutY="702.0" mnemonicParsing="false" onAction="#SwitchToTurTilbage" prefHeight="53.0" prefWidth="132.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilbage" textFill="#58b2dc">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
+         </font></Button>
+      <Button layoutX="92.0" layoutY="537.0" mnemonicParsing="false" onAction="#tilkald" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Tilkald" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="1238.0" layoutY="452.0" mnemonicParsing="false" onAction="#send" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Send" textFill="#58b2dc">
+      <Button layoutX="1212.0" layoutY="535.0" mnemonicParsing="false" onAction="#send" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Send" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <TableView fx:id="table_tilkald" layoutX="84.0" layoutY="87.0" prefHeight="356.0" prefWidth="444.0">
+      <TableView fx:id="table_tilkald" layoutX="90.0" layoutY="153.0" prefHeight="356.0" prefWidth="444.0">
         <columns>
-          <TableColumn fx:id="col_flyid" prefWidth="115.20001220703125" text="FlyID" />
-          <TableColumn fx:id="col_model" prefWidth="154.4000244140625" text="Model" />
-            <TableColumn fx:id="col_lokation" prefWidth="172.0" text="Lokation" />
+          <TableColumn fx:id="col_flyid" prefWidth="115.20001220703125" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="FlyID" />
+          <TableColumn fx:id="col_model" prefWidth="154.4000244140625" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Model" />
+            <TableColumn fx:id="col_lokation" prefWidth="172.0" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Lokation" />
         </columns>
       </TableView>
-      <TableView fx:id="table_send" layoutX="642.0" layoutY="87.0" prefHeight="356.0" prefWidth="302.0">
+      <TableView fx:id="table_send" layoutX="582.0" layoutY="151.0" prefHeight="356.0" prefWidth="302.0">
          <columns>
-            <TableColumn fx:id="col_sendFly" prefWidth="158.39996337890625" text="FlyID" />
-            <TableColumn fx:id="col_sendModel" prefWidth="142.40008544921875" text="Model" />
+            <TableColumn fx:id="col_sendFly" prefWidth="158.39996337890625" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="FlyID" />
+            <TableColumn fx:id="col_sendModel" prefWidth="142.40008544921875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Model" />
          </columns>
       </TableView>
-      <Button layoutX="1224.0" layoutY="41.0" mnemonicParsing="false" onAction="#loadTur" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se fly" textFill="#58b2dc">
+      <Button layoutX="1211.0" layoutY="19.0" mnemonicParsing="false" onAction="#loadTur" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #ffffff; -fx-border-color: #58b2dc; -fx-border-radius: 3; -fx-border-width: 1.5;" text="Se fly" textFill="#58b2dc">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Text layoutX="223.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly i udelandet">
+      <Text layoutX="186.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly i udelandet">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="727.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly i Billund">
+      <Text layoutX="664.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fly i Billund">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <TableView fx:id="table_airport" layoutX="962.0" layoutY="87.0" prefHeight="356.0" prefWidth="372.0">
+      <TableView fx:id="table_airport" layoutX="937.0" layoutY="151.0" prefHeight="356.0" prefWidth="372.0">
         <columns>
-          <TableColumn fx:id="col_airportName" prefWidth="290.40008544921875" text="Lufthavn" />
-          <TableColumn fx:id="col_airportAbb" minWidth="0.0" prefWidth="79.9998779296875" text="Forkortelse" />
+          <TableColumn fx:id="col_airportName" prefWidth="290.40008544921875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Lufthavn" />
+          <TableColumn fx:id="col_airportAbb" minWidth="0.0" prefWidth="79.9998779296875" style="-fx-background-color: #89cff0; -fx-border-color: #58b2dc;" text="Forkortelse" />
         </columns>
       </TableView>
-      <Text layoutX="1096.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lufthavne">
+      <Text layoutX="1075.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lufthavne">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Text>
    </children>
